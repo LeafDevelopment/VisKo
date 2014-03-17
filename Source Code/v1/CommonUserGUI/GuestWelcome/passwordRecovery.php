@@ -1,5 +1,4 @@
 <?php
-/*Require the login menu*/
 	require_once("guestmenu.inc");
 ?>
     <!-- Main jumbotron for a primary marketing message or call to action -->

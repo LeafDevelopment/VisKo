@@ -14,19 +14,21 @@ function checkRequiredFields(string_prefix, form_name)
 
 	//returns true if all objects in form
 	//with the string_prefix have nonempty values
-	alert("hello");
-	alert(inputs[i].value);
+	//alert("hello");
 
-
-	var inputs=document.form_name.elements;
-	for(var i=0; i<inputs.length; i++) 
+	var x = document.getElementById(form_name);
+	for(var i=0; i<x.length; i++) 
 	{
-		if (inputs[i].name.substring(0,length(string_prefix)).equals(string_prefix) && inputs[i].value!="") 
+		y=x.elements[i].id;
+		//alert("'"+y + "' startswith '" + y.substring(0,string_prefix.length) + "' which should be '"+ string_prefix + "' =?= "+ (y.substring(0,string_prefix.length)==string_prefix) +"! && '"+x.elements[i].value+"' is not blank "+ (x.elements[i].value==""));
+
+		if (y.substring(0,string_prefix.length)==string_prefix && x.elements[i].value=="") 
 		{
-			input[i].focus();
-			alert("You missed a required field(s)");
+			x.elements[i].focus();
+			//alert("You missed a required field(s)");
 			return false;
-		}   
+		}  
+	 
 	}
 	return true;
 }

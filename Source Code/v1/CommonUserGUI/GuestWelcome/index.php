@@ -58,7 +58,7 @@
 
 	<br/>
 	<!--Image Of Visualization -->
-	<img src="VisKo.png" alt="" width= "850" Height="300" border="1px" />
+	<img src="VisKo.png" alt="" width= "950" Height="300" border="1px" />
     </div>
   </div>
 	<p> </p>
