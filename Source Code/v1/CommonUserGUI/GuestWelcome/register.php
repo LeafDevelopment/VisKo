@@ -1,6 +1,10 @@
+
+
 <?php
 	require_once("guestmenu.inc");
 ?>
+
+//adding another comment
     <!-- Main jumbotron for a primary marketing message or call to action -->
    
  <form role="form" name="register" id="register" action="verifyEmail.php" onsubmit="return (checkRequiredFields('r', 'register') ? true : (alert('missing required field')==false))"  method="post">
