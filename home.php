@@ -24,7 +24,7 @@
 		<p>&nbsp;</p>
   		   <li><b> <a href="#">Visualize</a>    
 			<p>&nbsp;</p>
-		<li> <a href="#">Search History</a> 
+		<li> <a href="http://cs4311.cs.utep.edu/team2/specifyCriteria.php">Search History</a> 
 		<p>&nbsp;</p>
 		<li> <a href="#">Manage Services</a>
 		<p>&nbsp;</p>
