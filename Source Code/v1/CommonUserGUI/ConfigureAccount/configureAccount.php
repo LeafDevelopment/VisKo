@@ -1,4 +1,7 @@
 	<!--Import Header with VisKo logo-->
+
+//comments are the same in PHP
+
 <?php
 	require_once("regHeader.inc");
 ?>
