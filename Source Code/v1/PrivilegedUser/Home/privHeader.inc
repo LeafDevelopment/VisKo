@@ -1,10 +1,10 @@
 <!--Import the header file -->
 <?php
 require_once("header.inc");
+?>
+<?php
 
-
-//Function to make sure only a logged in user is in the allowed pages
-
+//Check if session has been set, else cannot be in the system
 if(!isset($_SESSION['email']))
 {
 	header('Location:index.php');
@@ -12,6 +12,7 @@ if(!isset($_SESSION['email']))
 
 
 ?>
+
 
 <!--Resize the the menu bar/header-->
 <style>
@@ -30,12 +31,12 @@ if(!isset($_SESSION['email']))
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="home.php"><img src="logo.png" height="30px" border="0" />&nbsp;&nbsp;&nbsp;<font size="5">VisKo</font></a>
+          <a class="navbar-brand" href="privHome.php"><img src="logo.png" height="30px" border="0" />&nbsp;&nbsp;&nbsp;<font size="5">Privileged Mode</font></a>
         </div>
         <div class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right" role="form" name="logout" id="logout" action="index.php" method="post">
-                <a class="navbar-brand" href="configureAccount.php"> <?php echo "Welcome ".$_SESSION['email'].""; ?> </font></a>    
-		<button type="submit" class="btn btn-primary" name='logout' id='logout' value='logout'>Logout</button>
+          <form class="navbar-form navbar-right" role="form" name="logout" id="logout" action="index.php"method="post">
+                <a class="navbar-brand"> <?php echo "Welcome ".$_SESSION['email'].""; ?> </font></a>    
+		<button type="submit" class="btn btn-primary"  href= index.php name='logout' value='logout'>Logout</button>
           </form>
 	</div>
       </div>
@@ -43,6 +44,5 @@ if(!isset($_SESSION['email']))
 <br/><br/><br/>
 
  <div class="container">
-<!-- /*Still to implement logout**/ -->
 
 
