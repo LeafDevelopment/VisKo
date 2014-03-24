@@ -3,7 +3,7 @@
 require_once("header.inc");
 
 
-//Function to make sure only a logged in user is in the allowed pages
+	//Function to make sure only a logged in user is in the allowed pages
 
 if(!isset($_SESSION['email']))
 {
@@ -34,7 +34,7 @@ if(!isset($_SESSION['email']))
         </div>
         <div class="navbar-collapse collapse">
           <form class="navbar-form navbar-right" role="form" name="logout" id="logout" action="index.php" method="post">
-                <a class="navbar-brand" href="configureAccount.php"> <?php echo "Welcome ".$_SESSION['email'].""; ?> </font></a>    
+                <a class="navbar-brand" href="configureAccount.php"> <?php echo "Welcome ".$_SESSION['email'].""; ?> </a>    
 		<button type="submit" class="btn btn-primary" name='logout' id='logout' value='logout'>Logout</button>
           </form>
 	</div>
