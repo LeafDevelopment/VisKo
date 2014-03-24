@@ -102,7 +102,29 @@ function setfields()
        	<!---Dropdown Lists--> 
 
 	<form action="specifyCriteria.php" method="post">
-   	 <h5>Abstraction</h5>
+
+	<table style="width:100%">
+	  <col width="100">
+	  <col width="500">
+	  <col width="500">
+	  <col width="500">
+	  <col width="500">
+   	  <tr>
+	    <td>
+              <h5>Abstraction</h5>
+            </td>
+	    <td>
+	    </td>
+	    <td>
+		<h5>Start Date</h5> 
+     	    </td>
+ 	    <td>
+	    </td>
+   	    <td>
+		 <h5>End Date</h5> 
+	    </td>
+      	</tr>
+ 	<tr><td>
 	<input type="hidden" id="abs1" name="abs1" >
    	 <select name="abs" id="abs" style="width: 250px">
 		<?php 
@@ -113,9 +135,37 @@ function setfields()
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"abs\">" . $row['abstraction'] . "</option>";
 	}
-	?> </select> </p>
-	
-	 <h5>Input URL</h5> 
+	?> </select>
+	<!--Display Calendar-->
+	</td>
+	<td>
+	</td>
+	<td>     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    	      <div id="datetimepicker1" class="input-append date">
+      	        <input type="text" width="200" onclick="$('#datetimepicker1').datetimepicker('show')"></input>
+      	        <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      	        </span>
+    	      </div>
+   	    </td>
+	<td>
+	</td>
+   	    <td>
+		   &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp;
+      	      <div id="datetimepicker2" class="input-append date">
+     	        <input type="text" width="200" onclick="$('#datetimepicker2').datetimepicker('show');"></input>
+     	        <span class="add-on">
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+    	        </span>
+   	      </div>
+   	    </td>
+	</tr>
+	<tr><td>
+	<!--End Calendar-->
+
+	<h5>Input URL</h5> 
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="url1" name="url1" >
    	 <select name="url" id="url"  style="width: 250px">
 	<?php 
@@ -127,10 +177,12 @@ function setfields()
 	echo "<option value=\"url\">" . $row['url'] . "</option>";
 	}
 	?> 
-         </select></p>
-  
-
-	 <h5>Viewer Set<h5>
+        </select>
+	</td></tr>
+  	<tr><td>
+	<h5>Viewer Set<h5>
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="vs1" name="vs1" >
    	 <select name="set" id="set" style="width:250px">
        	<?php 
@@ -141,9 +193,12 @@ function setfields()
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"vs\">" . $row['viewerset'] . "</option>";
 	}
-	?>  </select> </p>
-
-	 <h5>Source Format</h5>
+	?>  </select>
+	</td></tr>
+	<tr><td>
+	<h5>Source Format</h5>
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="sf1" name="sf1" >
    	 <select name="format" id="format" style="width: 250px">
 	<?php 
@@ -155,9 +210,12 @@ function setfields()
 	echo "<option value=\"sf\">" . $row['sourceformat'] . "</option>";
 	}
 	?> 
-         </select></p>
-
+         </select>
+	</td></tr>
+	<tr><td>
 	<h5>Source Type</h5>
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="st1" name="st1" >
    	 <select name="type" id="type" style="width: 250px">
        	<?php 
@@ -169,10 +227,12 @@ function setfields()
 	echo "<option value=\"st\">" . $row['sourcetype'] . "</option>";
 	}
 	?>  
-	</select> </p>
-
-
+	</select>
+	</td></tr>
+	<tr><td>
 	<h5>Target Type</h5>
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="tt1" name="tt1" >
    	 <select name="ttype" id="ttype" style="width: 250px">
        	<?php 
@@ -183,10 +243,12 @@ function setfields()
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"tt\">" . $row['targettype'] . "</option>";
 	}
-	?>   </select> </p>
-
-
+	?>   </select>
+	</td></tr>
+	<tr><td>
 	<h5>Target Format</h5>
+	</td></tr>
+	<tr><td>
 	<input type="hidden" id="tf1" name="tf1" >
    	 <select name="tformat" id="tformat" style="width: 250px">
         	<?php 
@@ -198,23 +260,23 @@ function setfields()
 	echo "<option value=\"tf\">" . $row['targetformat'] . "</option>";
 	}
 	?> 
-	 </select> </p>
-
-	
- 	 <p><input type="submit"  class="btn btn-primary" value="Search" style="width:100px;" onclick="setfields()" /></p>
-	
+	 </select><br/><br/>
+	</td></tr>
+	<tr><td>
+	<input type="submit"  class="btn btn-primary" value="Search" style="width:100px;" onclick="setfields()" />
+	</td></tr>
+	</table>
 	<input type="hidden" id="qry" name="qry" value=""/>
 	</form>
 
 	<hr/>	
 	
 	<?php
-	/* Select database to check dropdown menus */
+	/* send query to database, and display results base on user selections */
 	
 	if(isset($_POST['qry']))
 	{
 	
-		header("Content-type: image/jpeg");
 		echo "<b>Results</b><br/><br/>";
 		$db_selection= mysql_select_db($database, $connection);
 		$sql = mysql_query($_POST['qry']);
@@ -239,8 +301,22 @@ function setfields()
 	?>
 	
 	</div>
-
+	<!--Calendar javascript methods to display calendar--> 
 	<div id="middle_box">
+   	 <script type="text/javascript">
+   	   $('#datetimepicker1').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+        	language: 'en'
+      		});
+     	 $('#datetimepicker2').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+       		language: 'en'
+      	});
+     	$('#datetimepicker1').datetimepicker("show");
+     	$('#datetimepicker2').datetimepicker("show");
+    	</script>
 
 <!-- Import footer for to end visko-->
 <?php
