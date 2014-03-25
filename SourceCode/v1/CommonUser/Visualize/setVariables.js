@@ -1,8 +1,10 @@
 function setAbstraction(newAbstraction)
 {
+    
     sessvars.abstraction[sessvars.count.count] = {abstraction: newAbstraction };
     
     var abs = sessvars.abstraction[sessvars.count.count].abstraction.split("_",2);
+    
     sessvars.abstraction[sessvars.count.count].name = abs[1];
     
     var someimage = document.getElementById(newAbstraction);
