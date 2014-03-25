@@ -45,11 +45,10 @@ float:left;
 }
 
 #middle_box{
-width:700px;
+width:800px;
 height:100%;
 clear:both;
 margin:auto;
-background:url(images/middle_banner.jpg) no-repeat center;
 }
 .middle_box_content{
 padding:20px 0 0 20px;

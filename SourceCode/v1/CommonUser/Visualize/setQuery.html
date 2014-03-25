@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="sessionvars.js"></script>
+<script type="text/javascript" src="setVariables.js"></script>
+
+<title>Untitled Document</title>
+</head>
+    
+<style>
+.one {
+  width: 50%;
+  float: left;
+}
+
+.two {
+  margin-left: 59%;
+}
+</style>
+    
+<body>
+    
+<h1>Set Query Parameters</h1>
+<script>
+  
+    document.write('<img src="'+ sessvars.abstraction.image +'" alt="Thumbnail From Previous Page" width="30%" height="10%"/>');
+    document.write(sessvars.abstraction.name);
+        
+</script>
+
+<br />
+
+<hr />
+
+<div class="one">
+<p>Viewer Set<br />
+  <select name="viewerSet" id="viewerSet" style="width: 300px">
+      <option value="default">-- Choose ViewerSet --</option><option title="http://iw.cs.utep.edu:8080/visko-web/registry/module_d3.owl#d3-viewer-set" value="http://iw.cs.utep.edu:8080/visko-web/registry/module_d3.owl#d3-viewer-set">d3-viewer-set</option><option title="http://iw.cs.utep.edu:8080/visko-web/registry/module_paraview.owl#paraview" value="http://iw.cs.utep.edu:8080/visko-web/registry/module_paraview.owl#paraview">paraview</option><option title="http://iw.cs.utep.edu:8080/visko-web/registry/module_webbrowser.owl#web-browser" value="http://iw.cs.utep.edu:8080/visko-web/registry/module_webbrowser.owl#web-browser">web-browser</option>
+  </select>
+</p>
+<p>Input Data Format<br />
+<select name="inputDataFormat" id="inputDataFormat" style="width: 300px">
+    <option value="default">-- Choose Format --</option><option title="http://openvisko.org/rdf/pml2/formats/CSV.owl#CSV" value="http://openvisko.org/rdf/pml2/formats/CSV.owl#CSV">CSV</option><option title="http://openvisko.org/rdf/pml2/formats/FITS.owl#FITS" value="http://openvisko.org/rdf/pml2/formats/FITS.owl#FITS">FITS</option><option title="http://openvisko.org/rdf/pml2/formats/GIF.owl#GIF" value="http://openvisko.org/rdf/pml2/formats/GIF.owl#GIF">GIF</option><option title="http://openvisko.org/rdf/pml2/formats/HTML.owl#HTML" value="http://openvisko.org/rdf/pml2/formats/HTML.owl#HTML">HTML</option><option title="http://openvisko.org/rdf/pml2/formats/JPEG.owl#JPEG" value="http://openvisko.org/rdf/pml2/formats/JPEG.owl#JPEG">JPEG</option><option title="http://openvisko.org/rdf/pml2/formats/JSON.owl#JSON" value="http://openvisko.org/rdf/pml2/formats/JSON.owl#JSON">JSON</option><option title="http://openvisko.org/rdf/pml2/formats/LITTLE-ENDIAN-SEQUENCE.owl#LITTLE-ENDIAN-SEQUENCE" value="http://openvisko.org/rdf/pml2/formats/LITTLE-ENDIAN-SEQUENCE.owl#LITTLE-ENDIAN-SEQUENCE">LITTLE-ENDIAN-SEQUENCE</option><option title="http://openvisko.org/rdf/pml2/formats/MAT-FILE.owl#MAT-FILE" value="http://openvisko.org/rdf/pml2/formats/MAT-FILE.owl#MAT-FILE">MAT-FILE</option><option title="http://openvisko.org/rdf/pml2/formats/NETCDF.owl#NETCDF" value="http://openvisko.org/rdf/pml2/formats/NETCDF.owl#NETCDF">NETCDF</option><option title="http://openvisko.org/rdf/pml2/formats/PDB.owl#PDB" value="http://openvisko.org/rdf/pml2/formats/PDB.owl#PDB">PDB</option><option title="http://openvisko.org/rdf/pml2/formats/PDF.owl#PDF" value="http://openvisko.org/rdf/pml2/formats/PDF.owl#PDF">PDF</option><option title="http://openvisko.org/rdf/pml2/formats/PLAIN.owl#PLAIN" value="http://openvisko.org/rdf/pml2/formats/PLAIN.owl#PLAIN">PLAIN</option><option title="http://openvisko.org/rdf/pml2/formats/PLAINTEXT.owl#PLAINTEXT" value="http://openvisko.org/rdf/pml2/formats/PLAINTEXT.owl#PLAINTEXT">PLAINTEXT</option><option title="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG" value="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG">PNG</option><option title="http://openvisko.org/rdf/pml2/formats/POSTSCRIPT.owl#POSTSCRIPT" value="http://openvisko.org/rdf/pml2/formats/POSTSCRIPT.owl#POSTSCRIPT">POSTSCRIPT</option><option title="http://openvisko.org/rdf/pml2/formats/RDFXML.owl#RDFXML" value="http://openvisko.org/rdf/pml2/formats/RDFXML.owl#RDFXML">RDFXML</option><option title="http://openvisko.org/rdf/pml2/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES" value="http://openvisko.org/rdf/pml2/formats/SPACESEPARATEDVALUES.owl#SPACESEPARATEDVALUES">SPACESEPARATEDVALUES</option><option title="http://openvisko.org/rdf/pml2/formats/SPARQLRESULTSXML.owl#SPARQLRESULTSXML" value="http://openvisko.org/rdf/pml2/formats/SPARQLRESULTSXML.owl#SPARQLRESULTSXML">SPARQLRESULTSXML</option><option title="http://openvisko.org/rdf/pml2/formats/TIFF.owl#TIFF" value="http://openvisko.org/rdf/pml2/formats/TIFF.owl#TIFF">TIFF</option><option title="http://openvisko.org/rdf/pml2/formats/XDMF.owl#XDMF" value="http://openvisko.org/rdf/pml2/formats/XDMF.owl#XDMF">XDMF</option><option title="http://openvisko.org/rdf/pml2/formats/XML.owl#XML" value="http://openvisko.org/rdf/pml2/formats/XML.owl#XML">XML</option>
+  </select>
+</p>
+<p>Input Data Type<br/>
+  <select name="inputDataType" id="inputDataType" style="width: 300px">
+      <option value="default">-- Choose Type --</option><option title="http://d3js.org/d3.owl#Graph" value="http://d3js.org/d3.owl#Graph">http://d3js.org/d3.owl#Graph</option><option title="http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS" value="http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS">http://gmt.soest.hawaii.edu/gmt-data.owl#2D_Grid_COARDS</option><option title="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon" value="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon">http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_LatLon</option><option title="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_Time" value="http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_Time">http://iridl.ldeo.columbia.edu/ontologies/cf-obj.owl#Variable_with_Time</option><option title="http://openvisko.org/rdf/ontology/visko.owl#VisKo_DataTransformationPaths" value="http://openvisko.org/rdf/ontology/visko.owl#VisKo_DataTransformationPaths">http://openvisko.org/rdf/ontology/visko.owl#VisKo_DataTransformationPaths</option><option title="http://openvisko.org/rdf/ontology/visko.owl#VisKo_InstanceSummary" value="http://openvisko.org/rdf/ontology/visko.owl#VisKo_InstanceSummary">http://openvisko.org/rdf/ontology/visko.owl#VisKo_InstanceSummary</option><option title="http://openvisko.org/rdf/ontology/visko.owl#VisKo_KnowledgeBase" value="http://openvisko.org/rdf/ontology/visko.owl#VisKo_KnowledgeBase">http://openvisko.org/rdf/ontology/visko.owl#VisKo_KnowledgeBase</option><option title="http://openvisko.org/rdf/ontology/visko.owl#VisKo_OperatorPaths" value="http://openvisko.org/rdf/ontology/visko.owl#VisKo_OperatorPaths">http://openvisko.org/rdf/ontology/visko.owl#VisKo_OperatorPaths</option><option title="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18" value="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d18">XYZ Data</option><option title="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19" value="http://rio.cs.utep.edu/ciserver/ciprojects/CrustalModeling/CrustalModeling.owl#d19">Gravity Data</option><option title="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat" value="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat">http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DFloat</option><option title="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger" value="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger">http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DInteger</option><option title="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger" value="http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger">http://rio.cs.utep.edu/ciserver/ciprojects/HolesCode/HolesCodeSAW3.owl#Array1DUnsignedShortInteger</option><option title="http://www.vtk.org/vtk-data.owl#vtkImageData2D" value="http://www.vtk.org/vtk-data.owl#vtkImageData2D">http://www.vtk.org/vtk-data.owl#vtkImageData2D</option><option title="http://www.vtk.org/vtk-data.owl#vtkImageData3D" value="http://www.vtk.org/vtk-data.owl#vtkImageData3D">http://www.vtk.org/vtk-data.owl#vtkImageData3D</option><option title="http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers" value="http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers">http://www.vtk.org/vtk-data.owl#vtkImageData3DUnsignedShortIntegers</option><option title="http://www.vtk.org/vtk-data.owl#vtkPolyData" value="http://www.vtk.org/vtk-data.owl#vtkPolyData">http://www.vtk.org/vtk-data.owl#vtkPolyData</option><option title="http://www.w3.org/2002/07/owl#Thing" value="http://www.w3.org/2002/07/owl#Thing">http://www.w3.org/2002/07/owl#Thing</option>
+  </select>
+</p>
+<p>Input Data URL<br />
+  <input type="text" name="inputDataURL" id="inputDataURL" style="width: 300px" />
+ </p>
+    <center>
+        <button onclick="getValues()">Submit</button>
+</center>
+</div>
+<div class="two">
+  <p>&nbsp;</p>
+  <p>Viewer Sets</p>
+  <p><br />
+</p>
+</div>
+
+<p>&nbsp;</p>
+<script type="text/javascript">
+
+    function getValues()
+    {
+        var option1 = document.getElementById("viewerSet");
+        var viewerSet = option1.options[option1.selectedIndex].text;
+
+        var option2 = document.getElementById("inputDataFormat");
+        var inputDataFormat = option2.options[option2.selectedIndex].text;
+
+        var option3 = document.getElementById("inputDataType");
+        var inputDataType = option3.options[option3.selectedIndex].text;
+
+        var inputDataURL = document.getElementById("inputDataURL").value;
+        
+        if(viewerSet === "-- Choose ViewerSet --" || inputDataFormat === "-- Choose Format --")
+        {
+            alert("Viewer Set and Input Data Format must not be left empty.");
+        }
+        else
+        {
+            setQuery(viewerSet, inputDataFormat, inputDataType, inputDataURL);
+        }
+    }
+    
+</script>
+ 
+</body>
+</html>

@@ -1,21 +1,17 @@
 <?php
+	 ob_start(); 
 	require_once("guestmenu.inc");
 	
-
 	$count=-1;
 
 	if (!empty($_POST['logout']) && !empty($_SESSION['email']))
 	{
 		session_destroy();
 	}
-	
+	/*Simple login */
 	 if (!empty($_POST['rusername']) && !empty($_POST['rpassword'])) 
 	{
 		$_SESSION['email'] = $_POST['rusername'];
-
-		
-		//Connect with the database that will be used
-		$db_connection=mysql_select_db($database, $connection);
 
 		$sql = sprintf("SELECT email, password FROM User WHERE email='%s' AND password='%s'", mysql_real_escape_string($_POST['rusername']), mysql_real_escape_string($_POST['rpassword'])); 
 
@@ -24,10 +20,10 @@
 	 		 	
 		if ($count==1) 
 		{
-			header('Location:home.php');	
+			header("Location:home.php");	
 	    	} 
 	}
-	
+	ob_flush();	
 ?>
      
 <!-- start visko-->
