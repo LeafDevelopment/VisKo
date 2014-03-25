@@ -15,7 +15,7 @@
 			<br/> 
 			<br/> 
 			<br/> 
-		 <a href="#">Search Queries</a> 
+		 <a href="searchQuery.php">Search Queries</a> 
 			<br/> 
 			<br/> 
 			<br/> 
@@ -26,23 +26,23 @@
 			<br/> 
 			<br/> 
 
-		 <a href="#">Search Users</a> 
+		 <a href="searchUsers.php">Search Users</a> 
 			<br/> 
 			<br/> 
 			<br/> 
 
-		 <a href="#">Analyse Pipeliness</a> 
+		 <a href="#">Analyze Pipelines</a> 
 			<br/> 
 			<br/> 
 			<br/> 
 
-		 <a href="#">Analyse Queries</a>
+		 <a href="#">Analyze Queries</a>
 			<br/> 
 			<br/> 
 			<br/> 
 
 
-		 <a href="#">Analyse Services</a> 
+		 <a href="#">Analyze Services</a> 
 
  		</b>
 
