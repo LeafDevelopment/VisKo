@@ -42,11 +42,13 @@
           '<th scope="col">&nbsp;</th>' +
         '</tr>');
 
-
-            if(sessvars.abstraction.viewerSet === "d3-viewer-set")
+        for(var i = 0; i < sessvars.count.count; i++)
+        {
+            if(sessvars.abstraction[i].viewerSet === "d3-viewer-set")
             {
-                addToList()
+                addToList(i)
             }
+        }
 
     document.write('<tr>'+
           '<td>&nbsp;</td>' +
@@ -70,10 +72,13 @@
           '<th scope="col">&nbsp;</th>' +
         '</tr>');
         
-            if(sessvars.abstraction.viewerSet === "web-browser")
+        for(var i = 0; i < sessvars.count.count; i++)
+        {
+            if(sessvars.abstraction[i].viewerSet === "web-browser")
             {
-                addToList();
+                addToList(i);
             }
+        }
         
         document.write('<tr>' +
           '<td>&nbsp;</td>' +
@@ -96,11 +101,13 @@
           '<th scope="col">&nbsp;</th>' +
         '</tr>');
         
-        
-            if(sessvars.abstraction.viewerSet === "paraview")
+        for(var i = 0; i < sessvars.count.count; i++)
+        {
+            if(sessvars.abstraction[i].viewerSet === "paraview")
             {
-                addToList();
+                addToList(i);
             }
+        }
         
         document.write('<tr>'+
           '<td>&nbsp;</td>' +
