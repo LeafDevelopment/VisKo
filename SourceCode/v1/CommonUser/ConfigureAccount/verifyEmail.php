@@ -11,11 +11,40 @@
 </legend>
 </form>
 
+
+
+
 <?php
+    
+
+    $sql="INSERT INTO User (email, password, fname, lname, organization) VALUES ('$_POST[remail]', '$_POST[rpassword]', '$_POST[fname]', '$_POST[lname]', '$_POST[rorganization]')";
+    
+    if (!mysql_query($sql,$connection))
+    {
+        die('Error:' .mysql_error());
+    }
+    else
+    {echo "1 record added";}
+    
+    ?>
+
+
+<?php
+    
     //$dbEmail = SELECT LAST(email) FROM User;
-    require_once("php.ini");
-    $message = "hello";
-    mail('bekahlyn@gmail.com', 'My Subject', $message);
- 
+   
+    $to = 'bekahlyn92@gmail.com';
+    //define the subject of the email
+    $subject = 'Test email';
+    //define the message to be sent. Each line should be separated with \n
+    $message = "Hello World!\n\nThis is my first mail.";
+    //define the headers we want passed. Note that they are separated with \r\n
+    $headers = "From: webmaster@example.com\r\nReply-To: webmaster@example.com";
+    //send the email
+    $mail_sent = mail($to, $subject, $message, $headers);
+    //if the message is sent successfully print "Mail sent". Otherwise print "Mail failed"
+    echo $mail_sent ? "Mail sent" : "Mail failed";
+    
+    
     
     ?>
