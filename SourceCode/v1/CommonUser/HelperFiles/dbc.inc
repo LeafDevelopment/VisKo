@@ -1,6 +1,6 @@
 <?php
 	//Start the session of this php page
-	session_start();
+	//session_start();
 	
 	
 	/*Connect to the Database*/

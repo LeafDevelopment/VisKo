@@ -31,19 +31,40 @@
 
 <?php
     
-    //$dbEmail = SELECT LAST(email) FROM User;
-   
-    $to = 'bekahlyn92@gmail.com';
-    //define the subject of the email
-    $subject = 'Test email';
-    //define the message to be sent. Each line should be separated with \n
-    $message = "Hello World!\n\nThis is my first mail.";
-    //define the headers we want passed. Note that they are separated with \r\n
-    $headers = "From: webmaster@example.com\r\nReply-To: webmaster@example.com";
-    //send the email
-    $mail_sent = mail($to, $subject, $message, $headers);
-    //if the message is sent successfully print "Mail sent". Otherwise print "Mail failed"
-    echo $mail_sent ? "Mail sent" : "Mail failed";
+    $emailAddress=$_POST['remail'];
+    $message = "TEST:Account Verification Link Here";  //simple message only  you can add headers and other stuff
+    
+    
+    require "phpmailer/class.phpmailer.php";  
+    
+    
+    $mail= new PHPMailer();
+    
+    
+    $mail->IsSMTP();
+    $mail->Host       = "smtp.gmail.com"; // SMTP server example
+    $mail->SMTPAuth   = true;                  // enable SMTP authentication
+    $mail->SMTPSecure= "ssl";
+    $mail->Port       = 465;                    // set the SMTP port for the GMAIL server
+    $mail->Encoding = '7bit';
+    
+    
+    $mail->Username   = "leafdevelopment14@gmail.com"; // SMTP account username example  WHERE YOURE SENDING FROM
+    $mail->Password   = "VISKOADMIN";        // SMTP account password example
+    
+    
+    $mail->MsgHTML($message);
+    $mail->AddAddress("$emailAddress", "test");  //WHERE YOURE SENDING TO 
+    
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+        exit;
+    }
+    
+    
+    
+ 
     
     
     
