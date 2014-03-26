@@ -31,14 +31,16 @@
 
 <?php
     
-    $emailAddress=$_POST['remail'];
-    $message = "TEST:Account Verification Link Here";  //simple message only  you can add headers and other stuff
-    
-    
-    require "phpmailer/class.phpmailer.php";  
+    require "phpmailer/class.phpmailer.php";
     
     
     $mail= new PHPMailer();
+    
+    
+    $emailAddress=$_POST['remail'];
+    $message = "Your account has been successfully created! \n You may now login with your credentials at http://cs4311.cs.utep.edu/team2/index.php";  //simple message only  you can add headers and other stuff
+    
+    
     
     
     $mail->IsSMTP();
@@ -52,9 +54,9 @@
     $mail->Username   = "leafdevelopment14@gmail.com"; // SMTP account username example  WHERE YOURE SENDING FROM
     $mail->Password   = "VISKOADMIN";        // SMTP account password example
     
-    
+    $mail->Subject = 'Account Verification';
     $mail->MsgHTML($message);
-    $mail->AddAddress("$emailAddress", "test");  //WHERE YOURE SENDING TO 
+    $mail->AddAddress("$emailAddress", "New User");  //WHERE YOURE SENDING TO 
     
     if(!$mail->send()) {
         echo 'Message could not be sent.';
