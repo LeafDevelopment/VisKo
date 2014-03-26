@@ -15,7 +15,7 @@ function setAbstraction(newAbstraction)
     
     sessvars.abstraction[sessvars.count.count].image = image;
     
-    location.href = 'setQuery.html';
+    location.href = '../setQuery.php';
 }
 
 function setQuery(viewerSet, inputDataFormat, inputDataType, inputDataURL)
@@ -27,13 +27,12 @@ function setQuery(viewerSet, inputDataFormat, inputDataType, inputDataURL)
     
     sessvars.count.count++;
         
-    location.href = 'setPipelines.html';
+    location.href = '../setPipelines.php';
 }
 
 function addNewToQueue(index)
 {
     sessvars.queueAbstractions.push(index);
-    refreshQueue();
-    
+    refreshQueue();   
 }
 
