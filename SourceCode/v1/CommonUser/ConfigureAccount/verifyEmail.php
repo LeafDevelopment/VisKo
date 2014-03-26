@@ -7,7 +7,7 @@
 
 <form role="form" name="verifyEmail" id="verifyEmail"  method="post">
 <fieldset>
-<legend> <font size="10"> <b>Verify Email</b> </font><p> * Please go to your email and check for activation link  </p>
+<legend> <font size="5"> <b>Verify Email</b> </font><p> * Please go to your email to confirm your account </p>
 </legend>
 </form>
 
@@ -23,8 +23,7 @@
     {
         die('Error:' .mysql_error());
     }
-    else
-    {echo "1 record added";}
+    
     
     ?>
 
@@ -38,7 +37,7 @@
     
     
     $emailAddress=$_POST['remail'];
-    $message = "Your account has been successfully created! \n You may now login with your credentials at http://cs4311.cs.utep.edu/team2/index.php";  //simple message only  you can add headers and other stuff
+    $message = "Your account has been successfully created! \n\n You may now login with your credentials at http://cs4311.cs.utep.edu/team2/index.php";  //simple message only  you can add headers and other stuff
     
     
     
