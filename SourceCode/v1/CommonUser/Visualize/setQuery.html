@@ -10,12 +10,12 @@
     
 <style>
 .one {
-  width: 50%;
+  width: 80%;
   float: left;
 }
 
 .two {
-  margin-left: 59%;
+  margin-left: 40%;
 }
 </style>
     
@@ -23,9 +23,9 @@
     
 <h1>Set Query Parameters</h1>
 <script>
-  
-    document.write('<img src="'+ sessvars.abstraction.image +'" alt="Thumbnail From Previous Page" width="30%" height="10%"/>');
-    document.write(sessvars.abstraction.name);
+    
+    document.write('<div class="one">' + '<img src="'+ sessvars.abstraction[sessvars.count.count].image +'" alt="Thumbnail From Previous Page" width="30%" height="10%"/><div>');
+    document.write('<div class="two">' + sessvars.abstraction[sessvars.count.count].name +'</div>');
         
 </script>
 
