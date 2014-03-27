@@ -22,8 +22,7 @@
     
     $password=mysql_fetch_array (mysql_query("SELECT password FROM User WHERE email='$currentUser'"));
     $p=$password[0];
-    echo "Your password has been sent to your email";
-    $message = "Your password is: $p You may log back on at: http://cs4311.cs.utep.edu/team2/index.php";  //simple message only  you can add headers and other stuff
+    $message = "Your password is: $p";  //simple message only  you can add headers and other stuff
     
     
     
@@ -51,4 +50,20 @@
     
     
     
+    ?>
+
+
+
+<fieldset>
+<legend>
+<font size="5">
+<b>Password Sent!</b>
+</font>
+<p>You may log back on at <a href="http://cs4311.cs.utep.edu/team2/index.php">VisKo Login</a></p>
+</legend>
+</fieldset>
+
+
+<?php
+	require_once("footer.inc");
     ?>
