@@ -218,7 +218,6 @@ function setfields()
 
 
 
-	
 	<!--Calendar javascript methods to display calendar--> 
    	 <script type="text/javascript">
 
@@ -244,14 +243,6 @@ function setfields()
         	pickTime: false,
        		language: 'en'
       	});
-
-<?php
-	if(!isset($_POST['qry']))	
-	{
-     		echo "$('#datetimepicker1').datetimepicker('show');";
-  	   	echo "$('#datetimepicker2').datetimepicker('show');";
-	}
-?>
     	</script>
 
 <!-- Import footer for to end visko-->
