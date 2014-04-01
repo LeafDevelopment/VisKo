@@ -1,0 +1,6 @@
+Google Account for Leaf Development
+
+email: leafdevelopment14@gmail.com
+password: VISKOADMIN
+
+account used for new user verifications email and password recovery

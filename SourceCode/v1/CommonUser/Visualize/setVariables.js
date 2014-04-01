@@ -1,18 +1,21 @@
 function setAbstraction(newAbstraction)
 {
-    
-    sessvars.abstraction[sessvars.count.count] = {abstraction: newAbstraction };
+
+    sessvars.abstraction[sessvars.count.count] = {abstraction: newAbstraction};
     
     var abs = sessvars.abstraction[sessvars.count.count].abstraction.split("_",2);
-    
+        
     sessvars.abstraction[sessvars.count.count].name = abs[1];
     
     var someimage = document.getElementById(newAbstraction);
     var myimg = someimage.getElementsByTagName('img')[0];
     var image = myimg.src;
+    
+    alert(image);
+    
     sessvars.abstraction[sessvars.count.count].image = image;
     
-    location.href = 'setQuery.html';
+    location.href = '../setQuery.php';
 }
 
 function setQuery(viewerSet, inputDataFormat, inputDataType, inputDataURL)
@@ -24,5 +27,12 @@ function setQuery(viewerSet, inputDataFormat, inputDataType, inputDataURL)
     
     sessvars.count.count++;
         
-    location.href = 'setPipelines.html';
+    location.href = '../setPipelines.php';
 }
+
+function addNewToQueue(index)
+{
+    sessvars.queueAbstractions.push(index);
+    refreshQueue();   
+}
+
