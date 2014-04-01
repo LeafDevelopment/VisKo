@@ -20,7 +20,7 @@
 
  <div id="middle_box">
 
-
+   
  <form role="form" name="configure" id="configure" action="accountChanges.php" onsubmit="return (checkRequiredFields('pass', 'configure') ? true : (checkRequiredFields('email', 'configure') ? true : alert('missing required field')==false))" method="post">
   <fieldset>
     <legend> <font size="5"> <b>Change Password</b> </font></legend>

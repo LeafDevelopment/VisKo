@@ -12,7 +12,7 @@
 			<br/> 
 			<br/> 
          		
-  		  <b> <a href="#">Visualize</a>  
+  		  <b> <a href="visualize.php">Visualize</a>  
 			<br/> 
 			<br/> 
 			<br/> 

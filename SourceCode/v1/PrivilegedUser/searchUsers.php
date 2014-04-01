@@ -1,77 +1,261 @@
-<!--Import Header with VisKo logo-->
+	<!--Import Header with VisKo logo-->
 <?php
 	require_once("privHeader.inc");
-    ?>
+?>
+     
 
-<!-- start visko-->
 <link rel="stylesheet" type="text/css" href="style1.css" media="screen" />
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
+</script>
+
+<!--Funtion set fields, gets input from all the dropdown menus, and puts the into a query
+*To send it back to the database, and get search results*/-->
+<script>
+function setfields()
+{
+	var query="SELECT * FROM User";
+
+	var used=false;
+	var temp = "";
+	var y = "";
+	var x = document.getElementById("org").selectedIndex;
+	if(x!=0)
+	{
+		y = document.getElementById("org").options;
+		document.getElementById("org1").value=y[x].text;
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" organization='"+y[x].text+"'");
+		used=true;
+		query = temp;
+		temp="";
+	}	
+
+	x = document.getElementById("acc").selectedIndex;
+	if(x!=0)
+	{
+		y = document.getElementById("acc").options;
+		document.getElementById("acc1").value=y[x].text;
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" status='"+y[x].text+"'");
+		used=true;
+		query = temp;
+		temp="";
+	}
+	x = document.getElementById("email").value;
+	if(x!="")
+	{
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" email='"+x+"'");
+		used=true;
+		query = temp;
+		temp="";	
+	}
+	x = document.getElementById("fname").value;
+	if(x!="")
+	{
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" fname='"+x+"'");
+		used=true;
+		query = temp;
+		temp="";	
+	}
+	x = document.getElementById("lname").value;
+	if(x!="")
+	{
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" lname='"+x+"'");
+		used=true;
+		query = temp;
+		temp="";	
+	}
 
 
-<div id="wrapper">
-<div id="main_container">
-<div>
-<br/><br/>
-<!-- Import Navigation side bar for regular user-->
+	
 
-<?php
-    require_once("privNavigation.inc");
+	document.getElementById("qry").value=query+";";
+}
+</script>
+
+	<!-- Import Navigation side bar for regular user-->
+	      
+<?php 
+ require_once("privNavigation.inc");
 	?>
+	<br/> <br/>
 
+	<!-- Middle Content--> 
+    <div id="middle_box">
+    	
+	<p> <b>  User Search Criteria</b> </p>
+	<br/>
+       	<!---Dropdown Lists--> 
 
-<form role="form" name="searchUser" id="searchUser" action="" onsubmit="return (checkRequiredFields('pass', 'configure') ? true : (checkRequiredFields('email', 'configure') ? true : alert('missing required field')==false))" method="post">
-<fieldset>
-<legend> <font size="3"> <b>User Search Criteria</b> </font></legend>
-<div class="form-group">
-<div class="col-lg-10">
-<label for="ruserEmail" class="control-label">User Email</label>
-<br/>
-<input type="ruserEmail" class="form-control" id="ruserEmail" name="ruserEmail" placeholder="User Email">
-<br/>
-<label for="fname" class="control-label">First Name</label>
-<br/>
-<input type="fname" class="form-control" id="fname" name="fname" placeholder="First Name">
-<br/>
-<label for="lname" class="control-label">Last Name</label>
-<br/>
-<input type="lname" class="form-control" id="lname" name="lname" placeholder="Last Name">
+	<form action="searchUsers.php" method="post">
 
-
-<label for="organization" class="control-label">Organization</label>
-</td></tr>
-<tr><td>
-<input type="hidden" id="tf1" name="tf1" >
-<select name="tformat" id="tformat" style="width: 250px">
-<?php
+	<table style="width:100%">
+   	  <tr>
+	    <td>
+              <h5>Organization/Affiliation</h5>
+            </td>
+	  	<tr><td>
+	<input  type="hidden" id="org1" name="org1" >
+   	 <select name="org" id="org" style="width: 250px">
+		<?php 
 	/* Select database to populate dropdown*/
-	$sql = mysql_query("SELECT DISTINCT organization  FROM User;");
-	echo "<option value=\"abs\">Any Organization</option>";
-	while ($row = mysql_fetch_array($sql)){
-        echo "<option value=\"tf\">" . $row['organization'] . "</option>";
+		$db_selection= mysql_select_db($database, $connection);
+		$sql = mysql_query("SELECT DISTINCT organization FROM User;");
+		echo "<option value=\"org\">Any Organization/Affiliation</option>";	
+		while ($row = mysql_fetch_array($sql)){
+		echo "<option value=\"org\">" . $row['organization'] . "</option>";
+	}
+	?> </select>
+	<h5>Account Status</h5> 
+	</td></tr>
+	<tr><td>
+	<input type="hidden" id="acc1" name="acc1" >
+   	<select name="acc" id="acc"  style="width: 250px">
+	<?php 
+		/* Select database to populate dropdown*/
+		$db_selection= mysql_select_db($database, $connection);
+		$sql = mysql_query("SELECT DISTINCT status  FROM User;");
+		echo "<option value=\"acc\">Any Status</option>";	
+		while ($row = mysql_fetch_array($sql)){
+		echo "<option value=\"acc\">" . $row['status'] . "</option>";
+	}
+	?> 
+        </select>
+	</td></tr>
+  	<tr><td>
+	<h5>User Email<h5>
+	</td></tr>
+	<tr><td>
+	<input type="hidden" id="email1" name="email1" >
+   	<input type="email" class="form-control" name="email" id="email" style="width:250px" placeholder="Email">
+	<?php 
+	if (isset($_POST['email']))
+		$sql=mysql_query("");	
+	?>
+       	</td></tr>
+	<tr><td>
+	<h5>First Name</h5>
+	</td></tr>
+	<tr><td>
+	<input type="hidden" id="fname1" name="fname1" >
+   	<input type="text" class="form-control" name="fname" id="fname" style="width:250px" placeholder="First Name">
+	</td></tr>
+	<tr><td>
+	<h5>Last Name</h5>
+	</td></tr>
+	<tr><td>
+	<input type="hidden" id="lname1" name="lname1" >
+	<input type="text" class="form-control" name="lname" id="lname" style="width:250px" placeholder="Last Name">
+	</td></tr>
+	<tr><td>
+	</td></tr>
+	<tr><td>
+	<input type="submit"  class="btn btn-primary" value="Search" style="width:100px;" onclick="setfields()" />
+	</td></tr>
+	</table>
+	<input type="hidden" id="qry" name="qry" value=""/>
+	</form>
+
+	<hr/>	
+
+		
+<?php
+	/* send query to database, and display results base on user selections */
+
+	if(isset($_POST['qry']))
+	{
+		$query=$_POST['qry'];
+		//Testing purposes echo $query."<br/>";
+	
+		$db_selection= mysql_select_db($database, $connection);	
+		$sql = mysql_query($_POST['qry']);
+		$index = 1;
+		
+		$count1=mysql_num_rows($sql);
+	 	
+		if($count1==0)
+			echo "No Results Found<br/>";
+		else
+		{
+			if($count1==1)
+				echo "<b>1 Result Found</b>";
+			elseif($count1>1)
+				echo "<b>".$count1." Results Found</b>";
+
+			echo "<br/><br/><table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
+  				<tr>
+  				</tr>
+   				<tr>
+				<th>Email</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+			 	<th>Affiliation</th>
+				<th>Account Status</th>
+
+				</tr>";	
+			while ($row = mysql_fetch_array($sql))
+			{
+		
+				echo "<tr>";
+    				echo "<td>" . $row['email'] . "</td>";
+  				echo "<td>" . $row['fname'] . "</td>";
+				echo "<td>" . $row['lname'] . "</td>"; 	
+				echo "<td>".$row['organization']."</td>";
+				echo "<td><form action='searchUsers.php' method='post'> <input type='button' class='btn btn-primary' id='".$row['email']."' name='".$row['email']."' value='".$row['status']."'style='width:115px; align:center;' onclick=\"toggle('".$row['email']."' )\"></form> </td>"; 		
+				echo "</tr>";
+		
+				$index++;
+			}
+		echo "</table><br/> <br/>";
+		echo "<p id='qd' style='display:none'><b>Query Details</b><br/><textarea id='displayQ' rows='15' cols='97'> </textarea></p>";
+		
+		}
 	}
 	?>
 
 
 
-<br/>
-<br/>
-</div>
+	
+	<!--Calendar javascript methods to display calendar--> 
+   	 <script type="text/javascript">
 
+	
+	function toggle(id)
+	{
+		 if(document.getElementById(id).value=="Active"){
+  		 document.getElementById(id).value="Suspended";
+			}
 
+ 		 else if(document.getElementById(id).value=="Suspended"){
+ 		  document.getElementById(id).value="Active";
+		}
+		
+	}
+   	   $('#datetimepicker1').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+        	language: 'en'
+      		});
+     	 $('#datetimepicker2').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+       		language: 'en'
+      	});
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Import footer end of visko-->
 <?php
-	require_once("footer.inc");
-    ?>
+	if(!isset($_POST['qry']))	
+	{
+     		echo "$('#datetimepicker1').datetimepicker('show');";
+  	   	echo "$('#datetimepicker2').datetimepicker('show');";
+	}
+?>
+    	</script>
+
+<!-- Import footer for to end visko-->
+<?php
+	require_once("footer.inc"); 
+?>
+

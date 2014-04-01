@@ -5,7 +5,13 @@
      
 <!-- start visko-->
 <link rel="stylesheet" type="text/css" href="style1.css" media="screen" />
-
+<script>
+	//Mario added this part to keep the queue on visualizations 
+	//going as far as the user wants
+	sessvars.abstraction = new Array();
+    sessvars.queueAbstractions = new Array();
+    sessvars.count = {count: 0, queueCount: 0};
+</script>
 
 <div id="wrapper">
 <div id="main_container">

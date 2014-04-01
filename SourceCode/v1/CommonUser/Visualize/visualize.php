@@ -6,7 +6,6 @@
 <!-- start visko-->
 <link rel="stylesheet" type="text/css" href="style1.css" media="screen" />
 
-
 <div id="wrapper">
 <div id="main_container">
   <div>

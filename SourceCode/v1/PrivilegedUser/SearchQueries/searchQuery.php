@@ -1,6 +1,6 @@
 	<!--Import Header with VisKo logo-->
 <?php
-	require_once("regHeader.inc");
+	require_once("privHeader.inc");
 ?>
      
 
@@ -13,8 +13,9 @@
 <script>
 function setfields()
 {
-	var query="SELECT * FROM Query WHERE user='<?php echo $_SESSION['email']; ?>'";
+	var query="SELECT * FROM Query";
 
+	var used=false;
 	var temp = "";
 	var y = "";
 	var x = document.getElementById("abs").selectedIndex;
@@ -22,7 +23,9 @@ function setfields()
 	{
 		y = document.getElementById("abs").options;
 		document.getElementById("abs1").value=y[x].text;
-		temp = query.concat(" AND abstraction='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" abstraction='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}	
@@ -32,7 +35,9 @@ function setfields()
 	{
 		y = document.getElementById("url").options;
 		document.getElementById("url1").value=y[x].text;
-		temp = query.concat(" AND url='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" url='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
@@ -41,7 +46,9 @@ function setfields()
 	{
 		y = document.getElementById("set").options;
 		document.getElementById("vs1").value=y[x].text;
-		temp = query.concat(" AND viewerset='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" viewerset='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
@@ -50,7 +57,9 @@ function setfields()
 	{
 		y = document.getElementById("format").options;
 		document.getElementById("sf1").value=y[x].text;
-		temp = query.concat(" AND sourceformat='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" sourceformat='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
@@ -59,7 +68,9 @@ function setfields()
 	{
 		y = document.getElementById("type").options;
 		document.getElementById("st1").value=y[x].text;
-		temp = query.concat(" AND sourcetype='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" sourcetype='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
@@ -68,7 +79,9 @@ function setfields()
 	{
 		y = document.getElementById("ttype").options;
 		document.getElementById("tt1").value=y[x].text;
-		temp = query.concat(" AND targettype='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" targettype='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
@@ -77,31 +90,43 @@ function setfields()
 	{
 		y = document.getElementById("tformat").options;
 		document.getElementById("tf1").value=y[x].text;
-		temp = query.concat(" AND targetformat='"+y[x].text+"'");
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" targetformat='"+y[x].text+"'");
+		used=true;
 		query = temp;
 		temp="";
 	}
 
 
 	document.getElementById("qry").value=query+";";
+
 }
+
+	
+	function displayQuery(id)
+	{
+
+		document.getElementById('displayQ').value = document.getElementById(id).value;		
+		document.getElementById('qd').style.display="block";
+	}
+
 </script>
 
 	<!-- Import Navigation side bar for regular user-->
 	      
 <?php 
- require_once("regNavigation.inc");
+ require_once("privNavigation.inc");
 	?>
 <br/> <br/>
 
 	<!-- Middle Content--> 
     <div id="middle_box">
     	
-	  <p> <b> Visualization Search Criteria</b> </p>
+	  <p> <b> Query Search Criteria</b> </p>
 	<br/>
        	<!---Dropdown Lists--> 
 
-	<form action="specifyCriteria.php" method="post">
+	<form action="searchQuery.php" method="post">
 
 	<table style="width:100%">
 	  <col width="100">
@@ -130,7 +155,7 @@ function setfields()
 		<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT abstraction FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT abstraction FROM Query WHERE abstraction!='' ;");
 	echo "<option value=\"abs\">Any Abstraction</option>";	
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"abs\">" . $row['abstraction'] . "</option>";
@@ -141,7 +166,7 @@ function setfields()
 	<td>
 	</td>
 	<td>     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-    	       <div id="datetimepicker1" class="input-append date">
+    	      <div id="datetimepicker1" class="input-append date">
       	        <input type="text" width="200" onclick="$('#datetimepicker1').datetimepicker('show')"></input>
       	        <span class="add-on">
                   <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
@@ -155,7 +180,8 @@ function setfields()
       	      <div id="datetimepicker2" class="input-append date">
      	        <input type="text" width="200" onclick="$('#datetimepicker2').datetimepicker('show');"></input>
      	        <span class="add-on">
-                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>    	        </span>
+                  <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+    	        </span>
    	      </div>
    	    </td>
 	</tr>
@@ -170,7 +196,7 @@ function setfields()
 	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT url  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT url  FROM Query WHERE url!='' ;");
 	echo "<option value=\"abs\">Any URL</option>";	
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"url\">" . $row['url'] . "</option>";
@@ -187,7 +213,7 @@ function setfields()
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT viewerset  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT viewerset  FROM Query  WHERE viewerset!='' ;");
 	echo "<option value=\"abs\">Any Viewer Set</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"vs\">" . $row['viewerset'] . "</option>";
@@ -203,7 +229,7 @@ function setfields()
 	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT sourceformat  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT sourceformat  FROM Query  WHERE sourceformat!='' ;");
 	echo "<option value=\"abs\">Any Source Format</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"sf\">" . $row['sourceformat'] . "</option>";
@@ -220,7 +246,7 @@ function setfields()
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT sourcetype  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT sourcetype  FROM Query  WHERE sourcetype!='' ;");
 	echo "<option value=\"abs\">Any Source Type</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"st\">" . $row['sourcetype'] . "</option>";
@@ -237,7 +263,7 @@ function setfields()
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT targettype  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT targettype  FROM Query  WHERE targettype!='' ;");
 	echo "<option value=\"abs\">Any Target Type</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"tt\">" . $row['targettype'] . "</option>";
@@ -252,8 +278,7 @@ function setfields()
    	 <select name="tformat" id="tformat" style="width: 250px">
         	<?php 
 	/* Select database to populate dropdown*/
-	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT targetformat  FROM Query WHERE user='".$_SESSION['email']."';");
+	$sql = mysql_query("SELECT DISTINCT targetformat  FROM Query  WHERE targetformat!='' ;");
 	echo "<option value=\"abs\">Any Target Format</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"tf\">" . $row['targetformat'] . "</option>";
@@ -270,40 +295,65 @@ function setfields()
 
 	<hr/>	
 	
-	<?php
+<?php
 	/* send query to database, and display results base on user selections */
-	
+
 	if(isset($_POST['qry']))
 	{
+		$query=$_POST['qry'];
+		//Testing purposes echo $query."<br/>";
 	
-		echo "<b>Results</b><br/><br/>";
-		$db_selection= mysql_select_db($database, $connection);
+		$db_selection= mysql_select_db($database, $connection);	
 		$sql = mysql_query($_POST['qry']);
-		$count = 1;
-	
-		echo "<h5><b> Select an image to view details:</b></h5>";
+		$index = 1;
 		
-		echo "<table><tr>";
-		while ($row = mysql_fetch_array($sql))
+		$count1=mysql_num_rows($sql);
+	 	
+		if($count1==0)
+			echo "No Results Found<br/>";
+		else
 		{
-			echo "<td><a href='viewDetails.php?image=noimage.png&id=".$row['id']."'><img src='noimage.png' style='width:200px; height:100px'></a></td>";
-			if($count % 3==0)
+			if($count1==1)
+				echo "<b>1 Result Found</b>";
+			elseif($count1>1)
+				echo "<b>".$count1." Results Found</b>";
+
+			echo "<br/><br/><table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
+  				<tr>
+  				</tr>
+   				<tr>
+				<th>&nbsp;#</th>
+				<th>ID</th>
+				<th>Submitted By User</th>
+				<th>Date Executed</th>
+			 	<th>Error</th>
+				<th>Details</th>
+
+				</tr>";	
+			while ($row = mysql_fetch_array($sql))
 			{
-				echo "</tr><tr>";
+		
+				echo "<tr>";
+  				echo "<td>&nbsp;" . $index . "</td>";
+  				echo "<td>" . $row['id'] . "</td>";
+  				echo "<td>" . $row['user'] . "</td>";
+				echo "<td>" . $row['date'] . "</td>"; 	
+				echo "<td>".$row['error']." <input type='hidden' id='".$index."' value='".$row['query']."'></td>";
+				echo "<td><input type='button'  class='btn btn-primary' name='viewd' id='viewd' value='View Details' style='width:100px;' onclick=\"displayQuery('".$index."' )\" </td>"; 		
+				echo "</tr>";
+		
+				$index++;
 			}
-			$count++;
-		}
-		echo "</tr></table>";
-		if($count==1)
-		{
-			echo "None Found<br/>";
+		echo "</table><br/> <br/>";
+		echo "<p id='qd' style='display:none'><b>Query Details</b><br/><textarea id='displayQ' rows='15' cols='97'> </textarea></p>";
+		
 		}
 	}
-	?>
-	
-	</div>
+
+?>
 	<!--Calendar javascript methods to display calendar--> 
    	 <script type="text/javascript">
+
    	   $('#datetimepicker1').datetimepicker({
         	format: 'dd/MM/yyyy',
         	pickTime: false,

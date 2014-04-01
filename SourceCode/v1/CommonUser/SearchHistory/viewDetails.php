@@ -19,10 +19,10 @@
   <?php 
   
 		echo "<b>Image </b><br/>";
-		$sql =mysql_query("SELECT * FROM History WHERE user='".$_SESSION['email']."' AND id='".$_GET['id']."'");
+		$sql =mysql_query("SELECT * FROM Query WHERE user='".$_SESSION['email']."' AND id='".$_GET['id']."'");
 		
 		$count = 1;
-		echo "<table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
+		/*	echo "<table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
   			<tr>
   			</tr>
    			<tr>
@@ -30,31 +30,31 @@
 			<th>Abstraction</th>
 			<th>Output Format</th>
 		 	<th>Date</th>
-				</tr>";
+				</tr>";*/
 		while ($row = mysql_fetch_array($sql))
 		{
-			echo "<a href='viewDetails.php?id=".$row["id"]."'><img src=showimage.php?id=".$row["id"]." style='width:700px; height:300px'></a></td>";
+			echo "<img src='noimage.png' style='width:750px; height:300px'></td>";
 			
 			echo "<br/>";
 			echo"<br/>";
 			
 			
 			echo "<b> Responsible Pipeline </b>";
-
+			/*
 			echo "<tr>";
   			echo "<td>" . $row['id'] . "</td>";
   			echo "<td>" . $row['abstraction'] . "</td>";
-			echo "<td>" . $row['outputformat'] . "</td>";
   			echo "<td>" . $row['date'] . "</td>"; 	
 			echo "</tr>";
 			echo "<br/>";
-			echo "</table>";
+			echo "</table>";*/
 			echo "<br/> <br/>";
-			echo "<p>No Pipeline Information at the moment <style> color='red'</style></p>";
+			echo "<p>No Pipelines Information at the moment <style> color='red'</style></p>";
+
+			echo "<p>No Services Information at the moment <style> color='red'</style></p>";
 			echo "<br/> <br/>";
-			
 			echo "<b> Responsible Query </b>";
-			echo "<textarea rows='10' cols='85'>".$row['query']. "</textarea>";
+			echo "<textarea rows='15' cols='97'>".$row['query']. "</textarea>";
 			$count++;
 		}
 		
