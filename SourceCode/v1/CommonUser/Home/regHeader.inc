@@ -1,10 +1,16 @@
+<!--
+@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+
+
 <!--Import the header file -->
 <?php
 require_once("header.inc");
 
 
-	//Function to make sure only a logged in user is in the allowed pages
-
+//Check if user is not logged into the system the he/she cannot be in any other page but index page, so redirect them to index page
 if(!isset($_SESSION['email']))
 {
 	header('Location:index.php');

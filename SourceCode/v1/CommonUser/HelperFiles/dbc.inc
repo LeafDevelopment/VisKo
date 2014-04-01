@@ -1,4 +1,11 @@
 <?php
+/*
+@Authors: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
+
+
 	//Start the session of this php page
 	//session_start();
 	

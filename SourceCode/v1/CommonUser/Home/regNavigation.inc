@@ -1,3 +1,8 @@
+/*
+@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
 
 
 	<!--Sidebar Menu -->

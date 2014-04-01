@@ -1,3 +1,10 @@
+<!--
+@Author: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+
+
 	<!--Import Header with VisKo logo-->
 <?php
 	require_once("regHeader.inc");
@@ -8,8 +15,13 @@
 <link rel="stylesheet" type="text/css" href="datepicker.css" media="screen" />
 <script src="bootstrap-datepicker.js"></script>
 
-<!--Funtion set fields, gets input from all the dropdown menus, and puts the into a query
-*To send it back to the database, and get search results*/-->
+
+<!--
+The setfields method gets the element chosen in the dropdown/input text fields
+based on the element(s) creates a string:
+if user did not select any dropdown menu, or inputted text in the text fields the query string will be return as: 'Select * from tableName
+Else if a selection was made or field was filled, the method will return a query based on the user's selections
+-->
 <script>
 function setfields()
 {
@@ -271,8 +283,14 @@ function setfields()
 	<hr/>	
 	
 	<?php
-	/* send query to database, and display results base on user selections */
-	
+
+	/* 
+	Use php POST method to get 'qry' which is the query based on user selection
+	Send query to database, and display results base on user selections 
+	IF results were found display a table with results
+	If user clicks on the image navigate to 'view details page' to display visualization details 
+	else if no results were found display 'No results found'
+	*/
 	if(isset($_POST['qry']))
 	{
 	

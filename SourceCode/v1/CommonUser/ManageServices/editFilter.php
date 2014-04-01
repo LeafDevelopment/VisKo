@@ -1,4 +1,10 @@
-	<!--Import Header with VisKo logo-->
+<!--
+@Author: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+	
+<!--Import Header with VisKo logo-->
 <?php
 	require_once("regHeader.inc");
 ?>

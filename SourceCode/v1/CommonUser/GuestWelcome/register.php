@@ -1,15 +1,25 @@
+<!--
+@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
 
 
 <?php
+	/*
+	*Reuse other files to avoid code repetition
+	Require guest menu to display the guest user header meny: composed of login form, logo, register button, and forgot password link
+	Require 'dbc' file to use in database calls, as 'dbc' files contains the database connection
+	*/
 	require_once("guestmenu.inc");
-    require_once("dbc.inc");
+    	require_once("dbc.inc");
     
     
     ?>
-
-
-
-
+<!--Create the register form
+    This form contains all the fields for a user to register into the visko system
+    Relies on verifyEmail.php 
+	-->
 
 <form role="form" name="register" id="register" action="verifyEmail.php" onsubmit="return (checkRequiredFields('r', 'register') ? true : (alert('missing required field')==false)) (validateForm())"  method="post">
 <fieldset>

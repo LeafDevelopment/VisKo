@@ -1,3 +1,10 @@
+/*
+@Authors:Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
+
+
 function checkPass()
 {
     //Store the password field objects into variables ...

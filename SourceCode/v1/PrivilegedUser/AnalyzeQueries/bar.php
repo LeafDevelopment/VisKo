@@ -1,5 +1,13 @@
+<!--
+@Author: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a bar graph based on the query error found in the database
+-->
+
 <!doctype html>
 <html>
+
+<!--Form for the graph--> 
 	<head>
 		<title>Bar Chart</title>
 		<script src="./Chart.js"></script>
@@ -12,7 +20,12 @@
 	<body>
 		<canvas id="canvas" height="450" width="600"></canvas>
 
-
+<!--
+Javascript method: barChartData 
+Hardcodes the errors captured on the Queries in the database
+Based on error fills up the barchart using chart.js 
+At the same time a series of php calls to the database are used to fill up the chart with error information 
+-->
 	<script>
 
 		var barChartData = {

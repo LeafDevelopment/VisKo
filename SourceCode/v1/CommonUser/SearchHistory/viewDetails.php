@@ -1,3 +1,9 @@
+<!--
+@Author: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+
 	<!--Import Header with VisKo logo-->
 <?php
 	require_once("regHeader.inc");
@@ -17,6 +23,7 @@
       <p> <b> Search View Details </b> </p>
     	<br/>
   <?php 
+		/*Display image*/
   
 		echo "<b>Image </b><br/>";
 		$sql =mysql_query("SELECT * FROM Query WHERE user='".$_SESSION['email']."' AND id='".$_GET['id']."'");
@@ -53,6 +60,7 @@
 
 			echo "<p>No Services Information at the moment <style> color='red'</style></p>";
 			echo "<br/> <br/>";
+			/*Display Query*/
 			echo "<b> Responsible Query </b>";
 			echo "<textarea rows='15' cols='97'>".$row['query']. "</textarea>";
 			$count++;

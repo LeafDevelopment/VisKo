@@ -1,4 +1,10 @@
-<?php 
+<?php
+/*
+@Authors: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
+ 
 
 	if(isset($_GET['id']))
 	{

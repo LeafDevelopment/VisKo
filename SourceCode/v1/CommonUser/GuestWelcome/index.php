@@ -1,14 +1,27 @@
+<!--
+@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+
 <?php
     ob_start();
+
+	/*Include guestmenu.inc file to display the guest user header menu: login, 'register' button, and forgot password link */
 	require_once("guestmenu.inc");
 	
+
 	$count=-1;
-    
+
+	//IF user clicks 'logout' button then destroy the session  
 	if (!empty($_POST['logout']) && !empty($_SESSION['email']))
 	{
 		session_destroy();
 	}
-	/*Simple login */
+	/*Simple login
+	Check login credentials: If username and password fields have been set: check this values match the values in the database
+	If values posted mathch the databse then allow to home page, else give an error
+	 */
     if (!empty($_POST['rusername']) && !empty($_POST['rpassword']))
 	{
 		$_SESSION['email'] = $_POST['rusername'];

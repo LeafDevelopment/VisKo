@@ -1,4 +1,11 @@
+
 <script>
+/*
+@Authors: Maria Cortes
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
+
 /*Checks all empty required fields
 
 param1 = form_ID

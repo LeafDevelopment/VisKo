@@ -1,11 +1,12 @@
+<!--
+@Authors:Rebekah Gruver
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+-->
+
 <?php
 	require_once("guestmenu.inc");
     ?>
-
-
-
-
-
 
 <?php
     
