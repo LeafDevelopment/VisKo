@@ -1,12 +1,14 @@
-<!--
-@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
-@Date: March 26, 2014
-@Description: This file creates a view and funtionality for the Search Users page 
--->
+
 
 
 <!--Import the header file -->
 <?php
+/*
+
+@Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
+@Date: March 26, 2014
+@Description: This file creates a view and funtionality for the Search Users page 
+*/
 require_once("header.inc");
 
 
@@ -19,7 +21,7 @@ if(!isset($_SESSION['email']))
 
 ?>
 
-<!--Resize the the menu bar/header-->
+/*Resize the the menu bar/header*/
 <style>
 .navbar{
   min-height:60px; //* or whatever height you require

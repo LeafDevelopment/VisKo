@@ -1,19 +1,19 @@
-<!--
+
+<?php
+/*
 @Authors: Maria Cortes, Rebekah Gruver, Marcela Vazquez
 @Date: March 26, 2014
 @Description: This file creates a view and funtionality for the Search Users page 
--->
-
-<?php
+*/
 require_once("header.inc");
 ?>
 
-  <body>
-<!-- Create form for guest header menu
+ <body>
+/* Create form for guest header menu
 This form is contains login form, as well as the logo, and relies on the index.php file
 If user clicks on the 'register' button the system navigates to the register page
 If the user clicks on the 'forgot password' hyperlink the system nabigates to the forgot password page
---> 
+*/ 
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
