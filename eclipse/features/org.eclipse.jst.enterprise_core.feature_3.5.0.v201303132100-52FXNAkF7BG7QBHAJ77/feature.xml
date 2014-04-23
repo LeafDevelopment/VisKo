@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.jst.enterprise_core.feature"
+      label="%featureName"
+      version="3.5.0.v201303132100-52FXNAkF7BG7QBHAJ77"
+      provider-name="%providerName"
+      
+      >
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <plugin
+         id="org.eclipse.jst.j2ee.webservice"
+         download-size="0"
+         install-size="0"
+         version="1.1.400.v201004110600"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.j2ee.ejb"
+         download-size="0"
+         install-size="0"
+         version="1.1.700.v201305012100"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.j2ee.jca"
+         download-size="0"
+         install-size="0"
+         version="1.1.700.v201305311500"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.jee.ejb"
+         download-size="0"
+         install-size="0"
+         version="1.0.400.v201305070000"
+         unpack="false"/>
+
+</feature>

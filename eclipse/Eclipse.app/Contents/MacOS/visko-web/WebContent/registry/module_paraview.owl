@@ -1,0 +1,56 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owlsService="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:viskoV="http://openvisko.org/rdf/ontology/visko-view.owl#"
+    xmlns:viskoO="http://openvisko.org/rdf/ontology/visko-operator.owl#"
+    xmlns:owlsProcess="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:viskoS="http://openvisko.org/rdf/ontology/visko-service.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <viskoO:Viewer rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#polyData-viewer">
+    <viskoO:partOfViewerSet>
+      <viskoO:ViewerSet rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#paraview">
+        <rdfs:label>paraview</rdfs:label>
+        <rdfs:comment>paraview</rdfs:comment>
+      </viskoO:ViewerSet>
+    </viskoO:partOfViewerSet>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >polyData-viewer</pmlp:hasName>
+    <viskoO:hasInputDataType rdf:resource="http://www.vtk.org/vtk-data.owl#vtkPolyData"/>
+    <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/XML.owl#XML"/>
+    <rdfs:label>VTK Poly Data Viewer</rdfs:label>
+    <rdfs:comment>Views VTK Poly Data Files (VTP)</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoO:Viewer rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#imageData-viewer">
+    <viskoO:partOfViewerSet rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#paraview"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >imageData-viewer</pmlp:hasName>
+    <viskoO:hasInputDataType rdf:resource="http://www.vtk.org/vtk-data.owl#vtkImageData3D"/>
+    <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/XML.owl#XML"/>
+    <rdfs:label>VTK Image Data Viewer</rdfs:label>
+    <rdfs:comment>Views VTK Image Data Files (VTP)</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoO:Viewer rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#xdmf-viewer">
+    <viskoO:partOfViewerSet rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#paraview"/>
+    <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >xdmf-viewer</pmlp:hasName>
+    <viskoO:hasInputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/XDMF.owl#XDMF"/>
+    <rdfs:label>XDMF Viewer</rdfs:label>
+    <rdfs:comment>XDMF Viewer of the ParaView Distribution</rdfs:comment>
+  </viskoO:Viewer>
+  <viskoS:Module rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#module_paraview">
+    <viskoS:hasSourceCode>http://visko.cybershare.utep.edu:5080/module_paraview/org/openvisko/module/ModuleRDFRegistration.java</viskoS:hasSourceCode>
+    <viskoS:wrapsToolkit>
+      <viskoS:Toolkit rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_paraview.owl#kitware-paraview">
+        <viskoS:hasDocumentation>http://www.paraview.org/</viskoS:hasDocumentation>
+        <rdfs:label>Kitware ParaView</rdfs:label>
+        <rdfs:comment>Kitware ParaView</rdfs:comment>
+      </viskoS:Toolkit>
+    </viskoS:wrapsToolkit>
+    <viskoS:hasDocumentation>http://visko.cybershare.utep.edu:5080/module_paraview/module_paraview.html</viskoS:hasDocumentation>
+    <rdfs:label>module_paraview</rdfs:label>
+  </viskoS:Module>
+</rdf:RDF>

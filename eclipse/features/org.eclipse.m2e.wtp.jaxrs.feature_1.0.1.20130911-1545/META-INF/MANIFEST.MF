@@ -1,0 +1,29 @@
+Manifest-Version: 1.0
+Build-Jdk: 1.6.0_27
+Built-By: fbricon
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+
+Name: epl-v10.html
+SHA1-Digest: pTOyybcpEe+Y8lkSVUtarMleXqE=
+
+Name: META-INF/maven/org.eclipse.m2e.wtp/org.eclipse.m2e.wtp.jaxrs.fea
+ ture/pom.xml
+SHA1-Digest: FjajTwcIhfw9AiZH/CPhjWGR8mk=
+
+Name: p2.inf
+SHA1-Digest: DeIqPFsN4LtE58ShCI/aON7TSQs=
+
+Name: META-INF/maven/org.eclipse.m2e.wtp/org.eclipse.m2e.wtp.jaxrs.fea
+ ture/pom.properties
+SHA1-Digest: 6csbeiFwjMHmioqV2OuKxWpsOyw=
+
+Name: license.html
+SHA1-Digest: zfjcL9nrH2EQzj7ew8+eum3USA8=
+
+Name: feature.properties
+SHA1-Digest: PG0B4Dpqf1htSdmPthPQuQv3K10=
+
+Name: feature.xml
+SHA1-Digest: jDk4/GwKhRq4QUu6sToXvXdXybg=
+

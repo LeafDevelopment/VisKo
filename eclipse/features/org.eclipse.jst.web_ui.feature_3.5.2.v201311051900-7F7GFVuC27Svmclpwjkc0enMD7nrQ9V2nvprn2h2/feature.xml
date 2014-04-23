@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.jst.web_ui.feature"
+      label="%featureName"
+      version="3.5.2.v201311051900-7F7GFVuC27Svmclpwjkc0enMD7nrQ9V2nvprn2h2"
+      provider-name="%providerName"
+      
+      >
+
+   <description>
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="org.eclipse.wst.ws_ui.feature"
+         version="3.5.2.v201312021609-7I7EFk_EtEo_L0G8-I7p3FPGpvnnteWuy61GjVZN"/>
+
+   <includes
+         id="org.eclipse.jst.web_userdoc.feature"
+         version="3.5.0.v201303142300-23-7w312415412669"/>
+
+   <includes
+         id="org.eclipse.jst.web_core.feature"
+         version="3.5.2.v201311051900-7Q7GGbXFE9LeBYN3-od-Jt2kwz-0sN863877"/>
+
+   <plugin
+         id="org.eclipse.wst.jsdt.web.support.jsp"
+         download-size="0"
+         install-size="0"
+         version="1.0.600.v201307162035"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.common.annotations.ui"
+         download-size="0"
+         install-size="0"
+         version="1.1.300.v201002081900"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.common.ui"
+         download-size="0"
+         install-size="0"
+         version="1.0.201.v201208292200"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.jsp.ui"
+         download-size="0"
+         install-size="0"
+         version="1.1.801.v201307171524"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.jst.jsp.ui.infopop"
+         download-size="0"
+         install-size="0"
+         version="1.0.200.v201004150328"
+         unpack="false"/>
+
+</feature>

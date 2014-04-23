@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns="http://visko.cybershare.utep.edu:5080/visko-web/registry/gsn_csm_contour_map_raster.owl"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://visko.cybershare.utep.edu:5080/visko-web/registry/gsn_csm_contour_map_raster.owl">
+  <service:Service rdf:ID="gsn_csm_contour_map_rasterService">
+    <rdfs:label>gsn_csm_contour_map_raster</rdfs:label>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="gsn_csm_contour_map_rasterGrounding"/>
+    </service:supports>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="gsn_csm_contour_map_rasterProcess"/>
+    </service:describedBy>
+    <service:presents>
+      <profile:Profile rdf:ID="gsn_csm_contour_map_rasterProfile"/>
+    </service:presents>
+  </service:Service>
+  <profile:Profile rdf:about="#gsn_csm_contour_map_rasterProfile">
+    <profile:hasInput>
+      <process:Input rdf:ID="url">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>url</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="indexOfX">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>indexOfX</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:serviceName>gsn_csm_contour_map_raster</profile:serviceName>
+    <service:presentedBy rdf:resource="#gsn_csm_contour_map_rasterService"/>
+    <profile:hasInput>
+      <process:Input rdf:ID="font">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>font</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="indexOfZ">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>indexOfZ</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="plotVariable">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>plotVariable</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="latVariable">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>latVariable</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="indexOfY">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>indexOfY</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="colorTable">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>colorTable</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:textDescription>This is a VisKo/OWLS Service.</profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="lbOrientation">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>lbOrientation</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="return">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>return</rdfs:label>
+      </process:Output>
+    </profile:hasOutput>
+    <profile:hasInput>
+      <process:Input rdf:ID="lonVariable">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>lonVariable</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#gsn_csm_contour_map_rasterProcess">
+    <process:hasInput rdf:resource="#indexOfZ"/>
+    <process:hasInput rdf:resource="#font"/>
+    <process:hasInput rdf:resource="#plotVariable"/>
+    <process:hasInput rdf:resource="#colorTable"/>
+    <rdfs:label>gsn_csm_contour_map_rasterProcess</rdfs:label>
+    <process:hasInput rdf:resource="#lonVariable"/>
+    <process:hasInput rdf:resource="#latVariable"/>
+    <process:hasOutput rdf:resource="#return"/>
+    <process:hasInput rdf:resource="#indexOfX"/>
+    <service:describes rdf:resource="#gsn_csm_contour_map_rasterService"/>
+    <process:hasInput rdf:resource="#lbOrientation"/>
+    <process:hasInput rdf:resource="#url"/>
+    <process:hasInput rdf:resource="#indexOfY"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#gsn_csm_contour_map_rasterGrounding">
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="gsn_csm_contour_map_rasterAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+    <service:supportedBy rdf:resource="#gsn_csm_contour_map_rasterService"/>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#gsn_csm_contour_map_rasterAtomicProcessGrounding">
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#url</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#url"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#lonVariable</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#lonVariable"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#plotVariable</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#plotVariable"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#indexOfX</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#indexOfX"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#gsn_csm_contour_map_raster</grounding:operation>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://module.openvisko.org#gsn_csm_contour_map_rasterResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#font</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#font"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#indexOfY</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#indexOfY"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#lbOrientation</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#lbOrientation"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://module.openvisko.org#gsn_csm_contour_map_rasterRequest</grounding:wsdlInputMessage>
+    <grounding:owlsProcess rdf:resource="#gsn_csm_contour_map_rasterProcess"/>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#return</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#return"/>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#colorTable</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#colorTable"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#indexOfZ</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#indexOfZ"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl#latVariable</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#latVariable"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >file:/Users/marioflores/visko-rio/visko-modules/module_ncl/services/ModuleService?wsdl</grounding:wsdlDocument>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>

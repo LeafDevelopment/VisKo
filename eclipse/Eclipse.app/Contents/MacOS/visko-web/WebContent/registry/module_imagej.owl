@@ -1,0 +1,94 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owlsService="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:viskoV="http://openvisko.org/rdf/ontology/visko-view.owl#"
+    xmlns:viskoO="http://openvisko.org/rdf/ontology/visko-operator.owl#"
+    xmlns:owlsProcess="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:viskoS="http://openvisko.org/rdf/ontology/visko-service.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <viskoS:InputParameterBindings rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0">
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-6">
+        <owlsProcess:valueData>false</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#blackFill</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-2">
+        <owlsProcess:valueData>true</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#showWireframe</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:profiles rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-4">
+        <owlsProcess:valueData>true</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#showAxis</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-0">
+        <owlsProcess:valueData>400</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#plotWidth</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-7">
+        <owlsProcess:valueData>true</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#smooth</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-3">
+        <owlsProcess:valueData>true</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#showGrayscale</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-5">
+        <owlsProcess:valueData>true</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#whiteBackground</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+    <viskoS:declaresBindings>
+      <owlsProcess:InputBinding rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#bindings-0-binding-1">
+        <owlsProcess:valueData>100</owlsProcess:valueData>
+        <owlsProcess:toParam>http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#polygonMultiplier</owlsProcess:toParam>
+      </owlsProcess:InputBinding>
+    </viskoS:declaresBindings>
+  </viskoS:InputParameterBindings>
+  <viskoS:Module rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#module_imagej">
+    <viskoS:hasSourceCode>http://visko.cybershare.utep.edu:5080/module_imagej/org/openvisko/module/ModuleRDFRegistration.java</viskoS:hasSourceCode>
+    <viskoS:wrapsToolkit>
+      <viskoS:Toolkit rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#ImageJ">
+        <viskoS:hasDocumentation>http://rsbweb.nih.gov/ij/</viskoS:hasDocumentation>
+        <rdfs:label>ImageJ</rdfs:label>
+        <rdfs:comment>ImageJ from NIH</rdfs:comment>
+      </viskoS:Toolkit>
+    </viskoS:wrapsToolkit>
+    <viskoS:hasDocumentation>http://visko.cybershare.utep.edu:5080/module_imagej/module_imagej.html</viskoS:hasDocumentation>
+    <rdfs:label>module_imagej</rdfs:label>
+  </viskoS:Module>
+  <viskoS:Service rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#surfacePlotter">
+    <viskoS:supportedByOWLSService rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl#surfacePlotterService"/>
+    <viskoS:supportedByToolkit rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#ImageJ"/>
+    <viskoS:implementsOperator>
+      <viskoO:Transformer rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_imagej.owl#surfacePlotter-operator">
+        <viskoO:hasOutputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasOutputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG"/>
+        <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >surfacePlotter-operator</pmlp:hasName>
+        <viskoO:mapsTo rdf:resource="http://openvisko.org/rdf/ontology/visko-view.owl#3D_SurfacePlot"/>
+        <viskoO:hasInputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG"/>
+        <rdfs:label>Create a surface plot of color values contained in an image</rdfs:label>
+        <rdfs:comment>Creates a surface plot of color values contained in an image</rdfs:comment>
+      </viskoO:Transformer>
+    </viskoS:implementsOperator>
+    <rdfs:label>Create a surface plot of color values contained in an image</rdfs:label>
+    <rdfs:comment>Creates a surface plot of color values contained in an image</rdfs:comment>
+  </viskoS:Service>
+</rdf:RDF>

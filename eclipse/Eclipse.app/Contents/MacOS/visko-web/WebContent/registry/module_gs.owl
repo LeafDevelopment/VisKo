@@ -1,0 +1,78 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owlsService="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:viskoV="http://openvisko.org/rdf/ontology/visko-view.owl#"
+    xmlns:viskoO="http://openvisko.org/rdf/ontology/visko-operator.owl#"
+    xmlns:owlsProcess="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:viskoS="http://openvisko.org/rdf/ontology/visko-service.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:pmlp="http://inference-web.org/2.0/pml-provenance.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+  <viskoS:Service rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ps2pdf">
+    <viskoS:supportedByOWLSService rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/ps2pdf.owl#ps2pdfService"/>
+    <viskoS:supportedByToolkit>
+      <viskoS:Toolkit rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ghostscript">
+        <viskoS:hasDocumentation>http://www.ghostscript.com/</viskoS:hasDocumentation>
+        <rdfs:label>GhostScript (GS)</rdfs:label>
+        <rdfs:comment>GhostScript PostScript and PDF Tools</rdfs:comment>
+      </viskoS:Toolkit>
+    </viskoS:supportedByToolkit>
+    <viskoS:implementsOperator>
+      <viskoO:Converter rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ps2pdf-operator">
+        <viskoO:hasOutputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasOutputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PDF.owl#PDF"/>
+        <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >ps2pdf-operator</pmlp:hasName>
+        <viskoO:hasInputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/POSTSCRIPT.owl#POSTSCRIPT"/>
+        <rdfs:label>PS to PDF</rdfs:label>
+        <rdfs:comment>Converts PostScript (PS) to Portable Document Format (PDF)</rdfs:comment>
+      </viskoO:Converter>
+    </viskoS:implementsOperator>
+    <rdfs:label>PS to PDF</rdfs:label>
+    <rdfs:comment>Converts PostScript (PS) to Portable Document Format (PDF)</rdfs:comment>
+  </viskoS:Service>
+  <viskoS:Module rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#module_gs">
+    <viskoS:hasSourceCode>http://visko.cybershare.utep.edu:5080/module_gs/org/openvisko/module/ModuleRDFRegistration.java</viskoS:hasSourceCode>
+    <viskoS:wrapsToolkit rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ghostscript"/>
+    <viskoS:hasDocumentation>http://visko.cybershare.utep.edu:5080/module_gs/module_gs.html</viskoS:hasDocumentation>
+    <rdfs:label>module_gs</rdfs:label>
+  </viskoS:Module>
+  <viskoS:Service rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ps2png">
+    <viskoS:supportedByOWLSService rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/ps2png.owl#ps2pngService"/>
+    <viskoS:supportedByToolkit rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ghostscript"/>
+    <viskoS:implementsOperator>
+      <viskoO:Converter rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ps2png-operator">
+        <viskoO:hasOutputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasOutputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG"/>
+        <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >ps2png-operator</pmlp:hasName>
+        <viskoO:hasInputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/POSTSCRIPT.owl#POSTSCRIPT"/>
+        <rdfs:label>PS to PNG</rdfs:label>
+        <rdfs:comment>Converts PostScript (PS) to Portable Network Graphic (PNG)</rdfs:comment>
+      </viskoO:Converter>
+    </viskoS:implementsOperator>
+    <rdfs:label>PS to PNG</rdfs:label>
+    <rdfs:comment>Converts PostScript (PS) to Portable Network Graphic (PNG)</rdfs:comment>
+  </viskoS:Service>
+  <viskoS:Service rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#pdf2png">
+    <viskoS:supportedByOWLSService rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/pdf2png.owl#pdf2pngService"/>
+    <viskoS:supportedByToolkit rdf:resource="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#ghostscript"/>
+    <viskoS:implementsOperator>
+      <viskoO:Converter rdf:about="http://visko.cybershare.utep.edu:5080/visko-web/registry/module_gs.owl#pdf2png-operator">
+        <viskoO:hasOutputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasOutputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG"/>
+        <pmlp:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >pdf2png-operator</pmlp:hasName>
+        <viskoO:hasInputDataType rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <viskoO:hasInputFormat rdf:resource="http://openvisko.org/rdf/pml2/formats/PDF.owl#PDF"/>
+        <rdfs:label>PDF to PNG</rdfs:label>
+        <rdfs:comment>Converts Portable Document Format (PDF) to Portable Network Graphic (PNG)</rdfs:comment>
+      </viskoO:Converter>
+    </viskoS:implementsOperator>
+    <rdfs:label>PDF to PNG</rdfs:label>
+    <rdfs:comment>Converts Portable Document Format (PDF) to Portable Network Graphic (PNG)</rdfs:comment>
+  </viskoS:Service>
+</rdf:RDF>

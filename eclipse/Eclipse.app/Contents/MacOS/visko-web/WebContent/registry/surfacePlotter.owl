@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:expr="http://www.daml.org/services/owl-s/1.2/generic/Expression.owl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.2/Service.owl#"
+    xmlns:process="http://www.daml.org/services/owl-s/1.2/Process.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:grounding="http://www.daml.org/services/owl-s/1.2/Grounding.owl#"
+    xmlns:profile="http://www.daml.org/services/owl-s/1.2/Profile.owl#"
+    xmlns:list="http://www.daml.org/services/owl-s/1.2/generic/ObjectList.owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns="http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl"
+  xml:base="http://visko.cybershare.utep.edu:5080/visko-web/registry/surfacePlotter.owl">
+  <service:Service rdf:ID="surfacePlotterService">
+    <rdfs:label>Create a surface plot of color values contained in an image</rdfs:label>
+    <service:supports>
+      <grounding:WsdlGrounding rdf:ID="surfacePlotterGrounding"/>
+    </service:supports>
+    <service:describedBy>
+      <process:AtomicProcess rdf:ID="surfacePlotterProcess"/>
+    </service:describedBy>
+    <service:presents>
+      <profile:Profile rdf:ID="surfacePlotterProfile"/>
+    </service:presents>
+  </service:Service>
+  <profile:Profile rdf:about="#surfacePlotterProfile">
+    <profile:hasInput>
+      <process:Input rdf:ID="showWireframe">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>showWireframe</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="blackFill">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>blackFill</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasOutput>
+      <process:Output rdf:ID="return">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>return</rdfs:label>
+      </process:Output>
+    </profile:hasOutput>
+    <profile:hasInput>
+      <process:Input rdf:ID="url">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>url</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="showAxis">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>showAxis</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="polygonMultiplier">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>polygonMultiplier</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="smooth">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>smooth</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:textDescription>This is a VisKo/OWLS Service.</profile:textDescription>
+    <profile:hasInput>
+      <process:Input rdf:ID="plotWidth">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>plotWidth</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="showGrayscale">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>showGrayscale</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:hasInput>
+      <process:Input rdf:ID="whiteBackground">
+        <process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >http://www.w3.org/2001/XMLSchema#string</process:parameterType>
+        <rdfs:label>whiteBackground</rdfs:label>
+      </process:Input>
+    </profile:hasInput>
+    <profile:serviceName>surfacePlotter</profile:serviceName>
+    <service:presentedBy rdf:resource="#surfacePlotterService"/>
+  </profile:Profile>
+  <process:AtomicProcess rdf:about="#surfacePlotterProcess">
+    <process:hasInput rdf:resource="#smooth"/>
+    <process:hasInput rdf:resource="#showWireframe"/>
+    <process:hasInput rdf:resource="#polygonMultiplier"/>
+    <process:hasInput rdf:resource="#url"/>
+    <process:hasInput rdf:resource="#whiteBackground"/>
+    <process:hasInput rdf:resource="#showAxis"/>
+    <process:hasInput rdf:resource="#blackFill"/>
+    <rdfs:label>surfacePlotterProcess</rdfs:label>
+    <process:hasInput rdf:resource="#plotWidth"/>
+    <process:hasInput rdf:resource="#showGrayscale"/>
+    <process:hasOutput rdf:resource="#return"/>
+    <service:describes rdf:resource="#surfacePlotterService"/>
+  </process:AtomicProcess>
+  <grounding:WsdlGrounding rdf:about="#surfacePlotterGrounding">
+    <grounding:hasAtomicProcessGrounding>
+      <grounding:WsdlAtomicProcessGrounding rdf:ID="surfacePlotterAtomicProcessGrounding"/>
+    </grounding:hasAtomicProcessGrounding>
+    <service:supportedBy rdf:resource="#surfacePlotterService"/>
+  </grounding:WsdlGrounding>
+  <grounding:WsdlAtomicProcessGrounding rdf:about="#surfacePlotterAtomicProcessGrounding">
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#plotWidth</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#plotWidth"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutput>
+      <grounding:WsdlOutputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#return</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#return"/>
+      </grounding:WsdlOutputMessageMap>
+    </grounding:wsdlOutput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#blackFill</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#blackFill"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#smooth</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#smooth"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOutputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://module.openvisko.org#surfacePlotterResponse</grounding:wsdlOutputMessage>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#showAxis</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#showAxis"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#showWireframe</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#showWireframe"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#polygonMultiplier</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#polygonMultiplier"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#whiteBackground</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#whiteBackground"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#showGrayscale</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#showGrayscale"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlDocument rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl</grounding:wsdlDocument>
+    <grounding:wsdlInputMessage rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+    >http://module.openvisko.org#surfacePlotterRequest</grounding:wsdlInputMessage>
+    <grounding:owlsProcess rdf:resource="#surfacePlotterProcess"/>
+    <grounding:wsdlInput>
+      <grounding:WsdlInputMessageMap>
+        <grounding:wsdlMessagePart>file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#url</grounding:wsdlMessagePart>
+        <grounding:owlsParameter rdf:resource="#url"/>
+      </grounding:WsdlInputMessageMap>
+    </grounding:wsdlInput>
+    <grounding:wsdlOperation>
+      <grounding:WsdlOperationRef>
+        <grounding:operation rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI"
+        >file:/Users/marioflores/visko-rio/visko-modules/module_imagej/services/ModuleService?wsdl#surfacePlotter</grounding:operation>
+      </grounding:WsdlOperationRef>
+    </grounding:wsdlOperation>
+  </grounding:WsdlAtomicProcessGrounding>
+</rdf:RDF>
