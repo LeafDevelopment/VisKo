@@ -1,10 +1,4 @@
-<!--
-@Author: Maria Cortes
-@Date: March 26, 2014
-@Description: This file creates a view and funtionality for the Search Users page 
--->
-
-	<!--Import Header with VisKo logo-->
+<em>	<!--Import Header with VisKo logo-->
 <?php
 	require_once("privHeader.inc");
 ?>
@@ -14,23 +8,16 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js">
 </script>
 
-<!--
-The setfields method gets the element chosen in the dropdown/input text fields
-based on the element(s) creates a string:
-if user did not select any dropdown menu, or inputted text in the text fields the query string will be return as: 'Select * from tableName
-Else if a selection was made or field was filled, the method will return a query based on the user's selections
--->
+<!--Funtion set fields, gets input from all the dropdown menus, and puts the into a query
+*To send it back to the database, and get search results*/-->
 <script>
 function setfields()
-{	
-	/*create a string 'query' to return as a query string that will be sent to the database*/
+{
 	var query="SELECT * FROM User";
 
-	/*Create variables*/
 	var used=false;
 	var temp = "";
 	var y = "";
-
 	var x = document.getElementById("org").selectedIndex;
 	if(x!=0)
 	{
@@ -84,7 +71,7 @@ function setfields()
 
 
 	
-	/* return final string */
+
 	document.getElementById("qry").value=query+";";
 }
 </script>
@@ -136,7 +123,6 @@ function setfields()
 		echo "<option value=\"acc\">" . $row['status'] . "</option>";
 	}
 	?> 
-	<!--Form for search User--> 
         </select>
 	</td></tr>
   	<tr><td>
@@ -177,13 +163,26 @@ function setfields()
 
 		
 <?php
-	/* 
-	Use php POST method to get 'qry' which is the query based on user selection
-	Send query to database, and display results base on user selections 
-	IF results were found display a table with results
-	If user clicks toggle button, change user status
-	else if no results were found display 'No results found'
-	*/
+	/* send query to database, and display results base on user selections */
+
+	/*Change status of user if toggle clicked*/
+	if (isset($_GET['userE'])){
+		if(isset($_GET['userStat'])){
+
+			//Get variables	
+			$userId = $_GET['userE']; 
+			$userStatus = $_GET['userStat'];
+
+			//Make query for mysql
+			$db_selection= mysql_select_db($database, $connection);
+			$sql = mysql_query("UPDATE User SET status = '$userStatus' WHERE email = '$userId' LIMIT 1") or die (mysql_error());
+			
+			//echo "1" ; // if update successful
+			//else echo "0" // if update unsuccessful
+		}
+	}
+	
+	/*Done - cuange user status*/
 
 	if(isset($_POST['qry']))
 	{
@@ -204,7 +203,7 @@ function setfields()
 				echo "<b>1 Result Found</b>";
 			elseif($count1>1)
 				echo "<b>".$count1." Results Found</b>";
-			/*Create a table base on database results*/
+
 			echo "<br/><br/><table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
   				<tr>
   				</tr>
@@ -220,7 +219,7 @@ function setfields()
 			{
 		
 				echo "<tr>";
-    				echo "<td>" . $row['email'] . "</td>";
+    			echo "<td>" . $row['email'] . "</td>";
   				echo "<td>" . $row['fname'] . "</td>";
 				echo "<td>" . $row['lname'] . "</td>"; 	
 				echo "<td>".$row['organization']."</td>";
@@ -238,27 +237,107 @@ function setfields()
 
 
 
-	<!--	
-	Method takes input based on search user table button
-	If button has a value=suspended on click it changes to active
-	else if button value=active, on click it changes to suspended
-	--> 
+	
+	<!--Calendar javascript methods to display calendar--> 
    	 <script type="text/javascript">
+
+	
 	function toggle(id)
 	{
-		 if(document.getElementById(id).value=="Active"){
-  		 document.getElementById(id).value="Suspended";
-			}
-
- 		 else if(document.getElementById(id).value=="Suspended"){
- 		  document.getElementById(id).value="Active";
+		var userId = id;
+		var userStatus = "NULL";
+	
+		if(document.getElementById(id).value=="Active"){
+  			
+  			document.getElementById(id).value="Suspended";
+  			//Change status to suspended  	
+			userStatus = "Suspended";  			
+  			
+		}else if(document.getElementById(id).value=="Suspended"){
+ 			
+ 			document.getElementById(id).value="Active";
+ 			//Change status to active
+ 			userStatus = "Active";
+ 	
 		}
 		
+		/*THIRD TRY--------------------------*
+		
+		  if (str=="") {
+    		document.getElementById("txtHint").innerHTML="";
+    		return;
+  		  } 
+		  if (window.XMLHttpRequest) {
+    		// code for IE7+, Firefox, Chrome, Opera, Safari
+    		xmlhttp = new XMLHttpRequest();
+		  } else { // code for IE6, IE5
+		    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+		  }
+		  xmlhttp.onreadystatechange=function() {
+		    if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		      document.getElementById("txtHint").innerHTML=xmlhttp.responseText;
+		    }
+		  }
+  		xmlhttp.open("GET","setUserStatus.php?q="+str,true);
+  		xmlhttp.send();
+		
+		/*END OF THIRD TRY-------------------*/
+		
+		/*SECOND TRY------------------*/
+		var mysql =  require('mysql');
+		var connection =  mysql.createConnection({host : "earth.cs.utep.edu", user : "cs4311team2sp14", password: "treeBranch@6"});
+		connection.connect();
+		
+		connection.query("use cs4311team2sp14");
+		var strQuery = "UPDATE User SET status = " + userStatus + " WHERE email = " + userId + " LIMIT 1";	
+  
+		connection.query( strQuery, function(err, rows){
+		  	if(err)	{
+		  		throw err;
+		  	}else{
+		  		console.log( rows );
+		  	}
+		});
+		/*-----------------------------*/
+		
+		//Change status of user using ajax
+		$.ajax({
+			url: "searchUsers.php",  
+		    type: "GET",
+	        //pass data 
+		    data: {userE:userId.val(), userStat: userStatus.val()},    
+		    cache: false,
+		    success: function(data) {  
+       	        	if (data=="1")
+				        $('#message').html("<h2>Current balance has been updated!</h2>") 
+    		    } 
+    	});     	
 	}
-       	</script>
+	
+   	   $('#datetimepicker1').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+        	language: 'en'
+      		});
+     	 $('#datetimepicker2').datetimepicker({
+        	format: 'dd/MM/yyyy',
+        	pickTime: false,
+       		language: 'en'
+      	});
+
+<?php
+	if(!isset($_POST['qry']))	
+	{
+     		echo "$('#datetimepicker1').datetimepicker('show');";
+  	   	echo "$('#datetimepicker2').datetimepicker('show');";
+	}
+?>
+    	</script>
 
 <!-- Import footer for to end visko-->
 <?php
 	require_once("footer.inc"); 
 ?>
 
+
+</em>
