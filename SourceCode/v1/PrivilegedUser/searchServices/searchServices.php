@@ -1,30 +1,22 @@
-<!--
-@Author: Maria Cortes
-@Date: March 26, 2014
-@Description: This file creates a view and funtionality for the Search Users page 
--->
-
 	<!--Import Header with VisKo logo-->
 <?php
 	require_once("privHeader.inc");
 ?>
      
 
+	<head>
+     
+
 <link rel="stylesheet" type="text/css" href="style1.css" media="screen" />
 <link rel="stylesheet" type="text/css" href="datepicker.css" media="screen" />
 <script src="bootstrap-datepicker.js"></script>
 
-
-<!--
-The setfields method gets the element chosen in the dropdown/input text fields
-based on the element(s) creates a string:
-if user did not select any dropdown menu, or inputted text in the text fields the query string will be return as: 'Select * from tableName
-Else if a selection was made or field was filled, the method will return a query based on the user's selections
--->
+<!--Funtion set fields, gets input from all the dropdown menus, and puts the into a query
+*To send it back to the database, and get search results*/-->
 <script>
 function setfields()
 {
-	var query="SELECT * FROM Query";
+	var query="SELECT * FROM Services";
 
 	var used=false;
 	var temp = "";
@@ -35,7 +27,7 @@ function setfields()
 		y = document.getElementById("abs").options;
 		document.getElementById("abs1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" abstraction='"+y[x].text+"'");
+		temp = query.concat(where+" name='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
@@ -47,7 +39,7 @@ function setfields()
 		y = document.getElementById("url").options;
 		document.getElementById("url1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" url='"+y[x].text+"'");
+		temp = query.concat(where+" abstraction='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
@@ -58,7 +50,7 @@ function setfields()
 		y = document.getElementById("set").options;
 		document.getElementById("vs1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" viewerset='"+y[x].text+"'");
+		temp = query.concat(where+" sourceformat='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
@@ -69,7 +61,7 @@ function setfields()
 		y = document.getElementById("format").options;
 		document.getElementById("sf1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" sourceformat='"+y[x].text+"'");
+		temp = query.concat(where+" sourcetype='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
@@ -80,7 +72,7 @@ function setfields()
 		y = document.getElementById("type").options;
 		document.getElementById("st1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" sourcetype='"+y[x].text+"'");
+		temp = query.concat(where+" targetformat='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
@@ -102,23 +94,34 @@ function setfields()
 		y = document.getElementById("tformat").options;
 		document.getElementById("tf1").value=y[x].text;
 		var where = (used ? " AND" : " WHERE");
-		temp = query.concat(where+" targetformat='"+y[x].text+"'");
+		temp = query.concat(where+" error='"+y[x].text+"'");
 		used=true;
 		query = temp;
 		temp="";
 	}
-
+	x = document.getElementById("format0").selectedIndex;
+	if(x!=0)
+	{
+		y = document.getElementById("format0").options;
+		document.getElementById("stat").value=y[x].text;
+		var where = (used ? " AND" : " WHERE");
+		temp = query.concat(where+" status='"+y[x].text+"'");
+		used=true;
+		query = temp;
+		temp="";
+	}
 
 	document.getElementById("qry").value=query+";";
 
 }
 
 	
-	function displayQuery(id)
+	function displaySerDetails(id)
 	{
 
-		document.getElementById('displayQ').value = document.getElementById(id).value;		
-		document.getElementById('qd').style.display="block";
+		//document.getElementById('displayQ').value = "SERVICESSS";
+		//document.getElementById('displayQ').value = document.getElementById(id).value;		
+		//document.getElementById('qd').style.display="block";
 	}
 
 </script>
@@ -128,16 +131,18 @@ function setfields()
 <?php 
  require_once("privNavigation.inc");
 	?>
+	</head>
+
 <br/> <br/>
 
 	<!-- Middle Content--> 
     <div id="middle_box">
     	
-	  <p> <b> Query Search Criteria</b> </p>
+	  <p> <b> Service Search Criteria</b> </p>
 	<br/>
        	<!---Dropdown Lists--> 
 
-	<form action="searchQuery.php" method="post">
+	<form action="searchServices.php" method="post">
 
 	<table style="width:100%">
 	  <col width="100">
@@ -147,7 +152,7 @@ function setfields()
 	  <col width="500">
    	  <tr>
 	    <td>
-              <h5>Abstraction</h5>
+              <h5>Service Type</h5>
             </td>
 	    <td>
 	    </td>
@@ -166,10 +171,10 @@ function setfields()
 		<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT abstraction FROM Query WHERE abstraction!='' ;");
-	echo "<option value=\"abs\">Any Abstraction</option>";	
+	$sql = mysql_query("SELECT DISTINCT name FROM Services WHERE name!='' ;");
+	echo "<option value=\"abs\">Any Type</option>";	
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"abs\">" . $row['abstraction'] . "</option>";
+		echo "<option value=\"abs\">" . $row['name'] . "</option>";
 	}
 	?> </select>
 	<!--Display Calendar-->
@@ -199,7 +204,7 @@ function setfields()
 	<tr><td>
 	<!--End Calendar-->
 
-	<h5>Input URL</h5> 
+	<h5>Abstraction</h5> 
 	</td></tr>
 	<tr><td>
 	<input type="hidden" id="url1" name="url1" >
@@ -207,32 +212,31 @@ function setfields()
 	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT url  FROM Query WHERE url!='' ;");
-	echo "<option value=\"abs\">Any URL</option>";	
+	$sql = mysql_query("SELECT DISTINCT abstraction  FROM Services WHERE abstraction!='' ;");
+	echo "<option value=\"abs\">Any Abstraction</option>";	
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"url\">" . $row['url'] . "</option>";
+		echo "<option value=\"url\">" . $row['abstraction'] . "</option>";
 	}
 	?> 
         </select>
 	</td></tr>
   	<tr><td>
-	<h5>Viewer Set<h5>
-	</td></tr>
+	<h5>Source Format</h5></td></tr>
 	<tr><td>
 	<input type="hidden" id="vs1" name="vs1" >
    	 <select name="set" id="set" style="width:250px">
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT viewerset  FROM Query  WHERE viewerset!='' ;");
-	echo "<option value=\"abs\">Any Viewer Set</option>";
+	$sql = mysql_query("SELECT DISTINCT sourceformat FROM Services  WHERE sourceformat!='' ;");
+	echo "<option value=\"abs\">Any Source Format</option>";
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"vs\">" . $row['viewerset'] . "</option>";
+	echo "<option value=\"vs\">" . $row['sourceformat'] . "</option>";
 	}
 	?>  </select>
 	</td></tr>
 	<tr><td>
-	<h5>Source Format</h5>
+	<h5>Source Type</h5>
 	</td></tr>
 	<tr><td>
 	<input type="hidden" id="sf1" name="sf1" >
@@ -240,16 +244,16 @@ function setfields()
 	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT sourceformat  FROM Query  WHERE sourceformat!='' ;");
-	echo "<option value=\"abs\">Any Source Format</option>";
+	$sql = mysql_query("SELECT DISTINCT sourcetype FROM Services WHERE sourcetype!='' ;");
+	echo "<option value=\"abs\">Any Source Type</option>";
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"sf\">" . $row['sourceformat'] . "</option>";
+	echo "<option value=\"sf\">" . $row['sourcetype'] . "</option>";
 	}
 	?> 
          </select>
 	</td></tr>
 	<tr><td>
-	<h5>Source Type</h5>
+	<h5>Target Format</h5>
 	</td></tr>
 	<tr><td>
 	<input type="hidden" id="st1" name="st1" >
@@ -257,10 +261,10 @@ function setfields()
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT sourcetype  FROM Query  WHERE sourcetype!='' ;");
-	echo "<option value=\"abs\">Any Source Type</option>";
+	$sql = mysql_query("SELECT DISTINCT targetformat  FROM Services  WHERE targetformat!='' ;");
+	echo "<option value=\"abs\">Any Target Format</option>";
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"st\">" . $row['sourcetype'] . "</option>";
+	echo "<option value=\"st\">" . $row['targetformat'] . "</option>";
 	}
 	?>  
 	</select>
@@ -274,7 +278,7 @@ function setfields()
        	<?php 
 	/* Select database to populate dropdown*/
 	$db_selection= mysql_select_db($database, $connection);
-	$sql = mysql_query("SELECT DISTINCT targettype  FROM Query  WHERE targettype!='' ;");
+	$sql = mysql_query("SELECT DISTINCT targettype  FROM Services  WHERE targettype!='' ;");
 	echo "<option value=\"abs\">Any Target Type</option>";
 	while ($row = mysql_fetch_array($sql)){
 	echo "<option value=\"tt\">" . $row['targettype'] . "</option>";
@@ -282,21 +286,41 @@ function setfields()
 	?>   </select>
 	</td></tr>
 	<tr><td>
-	<h5>Target Format</h5>
+	<h5>Error</h5>
 	</td></tr>
-	<tr><td>
+	<tr><td style="height: 18px">
 	<input type="hidden" id="tf1" name="tf1" >
    	 <select name="tformat" id="tformat" style="width: 250px">
         	<?php 
 	/* Select database to populate dropdown*/
-	$sql = mysql_query("SELECT DISTINCT targetformat  FROM Query  WHERE targetformat!='' ;");
-	echo "<option value=\"abs\">Any Target Format</option>";
+	$sql = mysql_query("SELECT DISTINCT error  FROM Services WHERE error!='' ;");
+	echo "<option value=\"abs\">Any Error</option>";
 	while ($row = mysql_fetch_array($sql)){
-	echo "<option value=\"tf\">" . $row['targetformat'] . "</option>";
+	echo "<option value=\"tf\">" . $row['error'] . "</option>";
 	}
 	?> 
-	 </select><br/><br/>
+	 </select><br/>
 	</td></tr>
+		<tr>
+			<td>
+	<h5>Status</h5>
+	</td>
+		</tr>
+		<tr>
+			<td>
+   	 <select name="format0" id="format0" style="width: 250px">
+	<?php 
+	/* Select database to populate dropdown*/
+	$db_selection= mysql_select_db($database, $connection);
+	$sql = mysql_query("SELECT DISTINCT status FROM Services WHERE status!='' ;");
+	echo "<option value=\"abs\">Any Status</option>";
+	while ($row = mysql_fetch_array($sql)){
+	echo "<option value=\"stat\">" . $row['status'] . "</option>";
+	}
+	?> 
+         </select>
+	</td>
+		</tr>
 	<tr><td>
 	<input type="submit"  class="btn btn-primary" value="Search" style="width:100px;" onclick="setfields()" />
 	</td></tr>
@@ -307,22 +331,22 @@ function setfields()
 	<hr/>	
 	
 <?php
-	/* send query to database, and display results base on user selections 
-	IF results were found display a table with results
-	If user clicks 'view details' button display query details based on chosen query 
-	else if no results were found display 'No results found'
-	*/
+	/* send query to database, and display results base on user selections */
+
 	if(isset($_POST['qry']))
 	{
 		$query=$_POST['qry'];
+		
+		echo $query;
+		
 		//Testing purposes echo $query."<br/>";
-
+	
 		$db_selection= mysql_select_db($database, $connection);	
 		$sql = mysql_query($_POST['qry']);
 		$index = 1;
-
+		
 		$count1=mysql_num_rows($sql);
-
+	 	
 		if($count1==0)
 			echo "No Results Found<br/>";
 		else
@@ -331,36 +355,35 @@ function setfields()
 				echo "<b>1 Result Found</b>";
 			elseif($count1>1)
 				echo "<b>".$count1." Results Found</b>";
-			/* Create table base on results*/
+
 			echo "<br/><br/><table border='6'    width='100%'   cellpadding='4' cellspacing='3'>
   				<tr>
   				</tr>
    				<tr>
 				<th>&nbsp;#</th>
-				<th>ID</th>
-				<th>Submitted By User</th>
-				<th>Date Executed</th>
-			 	<th>Error</th>
-				<th>Details</th>
+				<th>Name</th>
+				<th>Registered by User</th>
+			 	<th>Date</th>
+				<th>Status</th>
+				<th>Error</th>
 
 				</tr>";	
 			while ($row = mysql_fetch_array($sql))
 			{
-
+		
 				echo "<tr>";
   				echo "<td>&nbsp;" . $index . "</td>";
-  				echo "<td>" . $row['id'] . "</td>";
-  				echo "<td>" . $row['user'] . "</td>";
-				echo "<td>" . $row['date'] . "</td>"; 	
+  				echo "<td>" . $row['name'] . "</td>";
+  				echo "<td>" . $row['email'] . "</td>";
+				echo "<td>" . $row['date'] . "</td>"; 
+				echo "<td>" . $row['status'] . "</td>";
 				echo "<td>".$row['error']." <input type='hidden' id='".$index."' value='".$row['query']."'></td>";
-				echo "<td><input type='button'  class='btn btn-primary' name='viewd' id='viewd' value='View Details' style='width:100px;' onclick=\"displayQuery('".$index."' )\" </td>"; 		
+				echo "<td><form action=\"viewServiceDetails.php\" method=\"post\"><input type='submit'  class='btn btn-primary' name='viewd' id='viewd' value='View Details' style='width:100px;'> <input type='hidden' name='indexS' value = '" . $index . "'> </form></td>"; 		
 				echo "</tr>";
-
+		
 				$index++;
 			}
-		echo "</table><br/> <br/>";
-		echo "<p id='qd' style='display:none'><b>Query Details</b><br/><textarea id='displayQ' rows='15' cols='97'> </textarea></p>";
-
+		echo "</table><br/> <br/>";		
 		}
 	}
 
