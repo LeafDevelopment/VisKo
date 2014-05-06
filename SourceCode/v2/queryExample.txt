@@ -1,0 +1,44 @@
+PREFIX views http://openvisko.org/rdf/ontology/visko-view.owl#
+				 	PREFIX visko http://visko.cybershare.utep.edu:5080/visko-web/registry/module_webbrowser.owl#
+				 	VISUALIZE http://visko.cybershare.utep.edu:5080/visko-web/test-data/jpl/20120717_120115_304_color.png
+				 	AS * IN visko:web-browser IN visko:web-browser
+				 	WHERE
+			        FORMAT = http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG
+			        AND TYPE = http://www.w3.org/2002/07/owl#Thing
+
+
+
+PREFIX views http://openvisko.org/rdf/ontology/visko-view.owl#
+				 	PREFIX visko http://visko.cybershare.utep.edu:5080/visko-web/registry/module_webbrowser.owl#
+				 	VISUALIZE http://visko.cybershare.utep.edu:5080/visko-web/test-data/jpl/20120717_120115_304_color.png
+				 	AS views:3D_SurfacePlot IN visko:web-browser IN visko:web-browser
+				 	WHERE
+			        FORMAT = http://openvisko.org/rdf/pml2/formats/PNG.owl#PNG
+			        AND TYPE = http://www.w3.org/2002/07/owl#Thing
+
+
+
+
+
+
+
+                      $details=java_context()->getServlet()->getPipeInfo(0);
+                      $dArray = explode("|", $details);
+                      $user=$_SESSION['email'];
+        
+                      
+                      $sql="INSERT INTO Pipeline(abstraction, url, viewerset, sourceformat, sourcetype, targettype, targetformat, user, date, query, outputformat, image, error) VALUES ('$dArray[0]', '$dArray[1]', '$dArray[2]', '$dArray[3]', '$dArray[4]','PNG', 'PNG', '$user', '05-06-2014', '$dArray[5]', '$dArray[6]', '$dArray[7]')";
+                      
+                      if (!mysql_query($sql,$connection))
+                      {
+                          die('Error:' .mysql_error());
+                      }
+            
+
+
+<div><center>Option 1: Submit Visualization Query
+<form name="input" name="submitQuery" action="checkQuery.php" method="post">
+<label for="queryText"></label>
+<textarea name="queryText" id="queryText" cols="45" rows="5"></textarea>
+
+<p><input type="submit" value="Submit" name="Submit"></p>    
